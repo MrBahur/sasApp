@@ -9,6 +9,8 @@ import javafx.scene.layout.StackPane;
  */
 public class MainController {
 
+    protected static final String serverURL = "http://localhost:8080";
+
     /** Holder of a switchable vista. */
     @FXML
     private StackPane vistaHolder;
