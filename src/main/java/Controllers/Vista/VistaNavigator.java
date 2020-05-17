@@ -19,6 +19,7 @@ public class VistaNavigator {
     public static final String MAIN = "/fxml/main.fxml";
     public static final String VISTA_1 = "/fxml/vista1.fxml";
     public static final String VISTA_2 = "/fxml/vista2.fxml";
+    public static final String LOGIN = "/fxml/login.fxml";
 
     /**
      * The main application layout controller.
