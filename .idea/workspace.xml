@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="SAS-117 # Added vista navigator and fixed packages">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <ignored path="JavaFxApplication.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,89 +53,12 @@
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#575#576#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/gradle.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8959" />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Tag Library Descriptor" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -150,22 +68,12 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/pom.xml" />
-        <option value="$PROJECT_DIR$/src/pom.tld" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/view/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/Controller.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-      </list>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -174,99 +82,16 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="sasApp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="sasApp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="sasApp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1614" />
-    <option name="height" value="876" />
-  </component>
+  <component name="ProjectId" id="1c2OFKKe7UUvfOGinJ6wdZdnarm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sasApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sasApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
@@ -278,7 +103,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589729420431" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589556285882" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -288,24 +113,24 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DELL\Desktop\Yaar\לימודים\שנה ג\סמסטר ב\sasApp\src\main\resources\javafx11" />
-      <recent name="C:\Users\DELL\Desktop\Yaar\לימודים\שנה ג\סמסטר ב\sasApp\src\main\resources" />
+      <recent name="F:\Study\EnglishPathProblems\Client\src\main\resources\css" />
+      <recent name="F:\Study\EnglishPathProblems\Client\src\main\resources\fxml" />
+      <recent name="F:\Study\EnglishPathProblems\Client\src\main\resources" />
+      <recent name="F:\Study\EnglishPathProblems\Client\src\main\java" />
+      <recent name="F:\Study\EnglishPathProblems\Client\src\main\java\view" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -318,19 +143,13 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="view.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="sasApp" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="view.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -378,6 +197,18 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -392,12 +223,17 @@
       <workItem from="1589402087264" duration="7896000" />
       <workItem from="1589492104921" duration="968000" />
       <workItem from="1589493386007" duration="8892000" />
-      <workItem from="1589720191458" duration="2847000" />
+      <workItem from="1589723117762" duration="2961000" />
     </task>
+    <task id="LOCAL-00001" summary="SAS-117 # Added vista navigator and fixed packages">
+      <created>1589725065543</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589725065543</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21905000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -408,62 +244,85 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2194332" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Favorites" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44404975" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39786857" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3285968" />
-      <window_info anchor="bottom" id="Problems" order="9" />
-      <window_info anchor="bottom" id="Changes" order="10" />
-      <window_info anchor="bottom" id="Profiler" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" weight="0.3285968" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.40497336" />
-      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="15" />
-      <window_info anchor="bottom" id="Terminal" order="16" weight="0.3285968" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="JetGradle" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Maven" order="7" visible="true" weight="0.15951417" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="SAS-117 # Added vista navigator and fixed packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="SAS-117 # Added vista navigator and fixed packages" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="756" y="404" width="408" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589724612023">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="756" y="404" width="408" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589724612023" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589723952470">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589723952470" />
+    <state x="615" y="114" key="CommitChangelistDialog2" timestamp="1589729485315">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="615" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729485315" />
+    <state x="41" y="89" key="DiffContextDialog" timestamp="1589729497749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="41" y="89" key="DiffContextDialog/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729497749" />
+    <state width="1877" height="389" key="GridCell.Tab.0.bottom" timestamp="1589729409478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="389" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729409478" />
+    <state width="1877" height="389" key="GridCell.Tab.0.center" timestamp="1589729409478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="389" key="GridCell.Tab.0.center/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729409478" />
+    <state width="1877" height="389" key="GridCell.Tab.0.left" timestamp="1589729409477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="389" key="GridCell.Tab.0.left/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729409477" />
+    <state width="1877" height="389" key="GridCell.Tab.0.right" timestamp="1589729409478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="389" key="GridCell.Tab.0.right/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729409478" />
+    <state width="1877" height="345" key="GridCell.Tab.1.bottom" timestamp="1589724896130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="345" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589724896130" />
+    <state width="1877" height="345" key="GridCell.Tab.1.center" timestamp="1589724896130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="345" key="GridCell.Tab.1.center/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589724896130" />
+    <state width="1877" height="345" key="GridCell.Tab.1.left" timestamp="1589724896130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="345" key="GridCell.Tab.1.left/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589724896130" />
+    <state width="1877" height="345" key="GridCell.Tab.1.right" timestamp="1589724896130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="345" key="GridCell.Tab.1.right/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589724896130" />
+    <state x="760" y="434" key="VCS.ChangelistChooser" timestamp="1589729524067">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="760" y="434" key="VCS.ChangelistChooser/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729524067" />
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2" timestamp="1589729502073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.77.1366.728/-1280.46.1280.984@0.0.1920.1040" timestamp="1589729502073" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/view/Main.java</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Controllers/Vista/VistaNavigator.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -471,77 +330,6 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/src/pom.tld" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="181" selection-start-line="181" selection-end-line="181" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/javafx11/javafx.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/gradle.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8959" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
