@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?scenebuilder-stylesheet vista.css?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox prefHeight="200.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.MainController">
-    <children>
-        <Label fx:id="headerLabel" maxWidth="1.7976931348623157E308" text="Header" VBox.vgrow="NEVER" />
-        <StackPane fx:id="vistaHolder" VBox.vgrow="ALWAYS" />
-    </children>
-</VBox>
+<BorderPane fx:id="vistaHolder" prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+   <left>
+    <VBox prefHeight="230.0" prefWidth="180.0">
+        <children>
+            <JFXTextField text="Welcome Back , " />
+            <ImageView fitHeight="89.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                </image>
+            </ImageView>
+            <JFXButton fx:id="personalArea" buttonType="RAISED" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Personal Area" />
+            <JFXButton fx:id="teams" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Leagues" />
+            <JFXButton fx:id="leagues" buttonType="RAISED" layoutX="10.0" layoutY="197.0" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Teams" />
+            <JFXButton fx:id="games" buttonType="RAISED" layoutX="10.0" layoutY="197.0" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Games" />
+            <JFXButton fx:id="exit" buttonType="RAISED" layoutX="10.0" layoutY="271.0" onAction="#exit" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Exit" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/logo.PNG" />
+               </image>
+            </ImageView>
+        </children>
+    </VBox>
+   </left>
+   <center>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="640.0" stroke="BLACK" strokeType="INSIDE" width="620.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
