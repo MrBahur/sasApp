@@ -24,13 +24,13 @@
             <JFXButton fx:id="exit" buttonType="RAISED" layoutX="10.0" layoutY="271.0" onAction="#exit" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Exit" />
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/images/logo.PNG" />
+                  <Image url="/resources/images/logo.PNG" />
                </image>
             </ImageView>
         </children>
     </VBox>
    </left>
    <center>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="640.0" stroke="BLACK" strokeType="INSIDE" width="620.0" BorderPane.alignment="CENTER" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="640.0" stroke="BLACK" strokeType="INSIDE" width="620.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
