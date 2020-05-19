@@ -58,7 +58,7 @@ public class registerController {
                             Alert alert = new Alert(Alert.AlertType.NONE);
                             alert.setContentText("Your account was created successfully. Please login to continue.");
                             alert.show();
-                            //move to login page
+                            //move to login
                             VistaNavigator.loadVista(VistaNavigator.LOGIN);
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);

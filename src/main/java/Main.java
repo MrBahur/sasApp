@@ -33,7 +33,7 @@ public class Main extends Application {
         Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.MAIN));
         MainController mainController = loader.getController();
         VistaNavigator.setMainController(mainController);
-        VistaNavigator.loadVista(VistaNavigator.REGISTER);
+//        VistaNavigator.loadVista(VistaNavigator.REGISTER);
         return mainPane;
     }
 
