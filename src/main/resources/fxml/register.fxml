@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" prefHeight="446.0"
+          prefWidth="617.0" style="-fx-background-color: #5E757F;" vgap="10" fx:controller="Controllers.registerController">
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40" />
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="200.0" prefWidth="200.0" />
+    </columnConstraints>
+    <!-- Add Header Label -->
+    <Label text="⚽ Register Form ⚽" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="1">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+        </font>
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Label>
+    <!-- Add Username Label -->
+    <Label prefHeight="20.0" prefWidth="88.0" text="Username : " textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <!-- Add Username Field -->
+    <TextField fx:id="userNameField" prefHeight="40" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <!-- Add Password Label -->
+    <Label prefHeight="20.0" prefWidth="87.0" text="Password : " textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <!-- Add Password Field -->
+    <PasswordField fx:id="passwordField" prefHeight="32.0" prefWidth="327.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <!-- Add Name Label -->
+    <Label prefHeight="20.0" prefWidth="86.0" text="Full Name : " textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <!-- Add Name Text Field -->
+    <TextField fx:id="fullNameField" prefHeight="61.0" prefWidth="327.0" promptText="Full Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <!-- Add Email Label -->
+    <Label contentDisplay="RIGHT" prefHeight="20.0" prefWidth="86.0" text="Email : " textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="4">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <!-- Add Email Text Field -->
+    <TextField fx:id="emailField" prefHeight="34.0" prefWidth="327.0" promptText="Email Address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+   <Label prefHeight="20.0" prefWidth="88.0" text="Occupation:" textFill="WHITE" GridPane.rowIndex="6">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
+    <ComboBox fx:id="occupation" prefHeight="47.0" prefWidth="327.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="ASSOCIATION REPRESENTATIVE" />
+                <String fx:value="TEAM OWNER" />
+                <String fx:value="TEAM MANAGER" />
+                <String fx:value="PLAYER" />
+                <String fx:value="REFEREE" />
+                <String fx:value="COACH" />
+                <String fx:value="FAN" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Add Submit Button -->
+    <Button fx:id="submitButton" defaultButton="true" onAction="#register" prefHeight="33.0" prefWidth="123.0" text="Submit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="1">
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+    </Button>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints maxHeight="34.33331298828125" minHeight="32.33331298828125" prefHeight="32.33331298828125" />
+      <RowConstraints maxHeight="40.66668701171875" minHeight="32.0" prefHeight="36.33331298828125" />
+      <RowConstraints maxHeight="36.666656494140625" minHeight="26.33331298828125" prefHeight="32.66668701171875" />
+      <RowConstraints maxHeight="36.66668701171875" minHeight="27.66668701171875" prefHeight="30.0" />
+      <RowConstraints maxHeight="6.666656494140625" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="32.66668701171875" minHeight="25.333343505859375" prefHeight="32.0" />
+      <RowConstraints maxHeight="65.66665649414062" minHeight="64.33331298828125" prefHeight="64.33331298828125" />
+   </rowConstraints>
+</GridPane>

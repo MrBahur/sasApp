@@ -60,4 +60,5 @@ public class MainController {
     public void showGames(ActionEvent actionEvent) {
         VistaNavigator.loadVista(VistaNavigator.GAMES);
     }
+
 }
