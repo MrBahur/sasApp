@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.wizard.WizardController">
+   <Button fx:id="exitBtn" layoutX="706.0" layoutY="596.0" mnemonicParsing="false" onAction="#exitWizard" prefHeight="30.0" prefWidth="80.0" text="Cancel" />
+   <Button fx:id="nextBtn" layoutX="600.0" layoutY="596.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="30.0" prefWidth="80.0" text="Next&gt;" />
+   <Button fx:id="prevBtn" layoutX="506.0" layoutY="596.0" mnemonicParsing="false" onAction="#previousPage" prefHeight="30.0" prefWidth="80.0" text="&lt;Back" />
+   <Button fx:id="finishBtn" layoutX="655.0" layoutY="596.0" mnemonicParsing="false" onAction="#finishWizard" prefHeight="30.0" prefWidth="80.0" text="Finish" />
+   <Line endX="344.00006103515625" endY="306.0" layoutX="462.0"  layoutY="280.0" opacity="0.45" startX="-462.0" startY="306.0" strokeLineCap="BUTT" />
+   <ImageView fitHeight="587.0" fitWidth="339.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@/images/setup.jpg" />
+      </image>
+   </ImageView>
+   <AnchorPane fx:id="vistaHolder" layoutX="339.0" prefHeight="584.0" prefWidth="468.0">
+   </AnchorPane>
+</AnchorPane>
