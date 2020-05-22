@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import view.Controller;
 
 
 /**
@@ -60,4 +61,6 @@ public class MainController {
     public void showGames(ActionEvent actionEvent) {
         VistaNavigator.loadVista(VistaNavigator.GAMES);
     }
+
+
 }

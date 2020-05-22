@@ -26,3 +26,21 @@
     -fx-base: lightblue;
     -fx-font-size: 20px;
 }
+#teamPage {
+    -fx-background-image: url('../images/background60.jpg');
+
+}
+#vistaHolder {
+    -fx-background-image: url('../images/background60.jpg');
+}
+#teamFrame{
+    -fx-background-image: url('../images/background60.jpg');
+}
+#editBtn{
+    -fx-pref-height: 10px;
+    -fx-pref-width: 50px;
+    -fx-padding: 0 0 0 0;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color: white;
+    -fx-font-size: 16;
+}
