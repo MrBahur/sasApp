@@ -1,5 +1,6 @@
 package Controllers;
 
+import Controllers.Vista.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -44,7 +45,7 @@ public class loginController {
                 if (entity != null) {
                     String result = EntityUtils.toString(entity);
                     if (result.equals("Found")) {
-                        //TODO: move to home page
+                            VistaNavigator.loadVista(VistaNavigator.MAIN);
                     }
 
                     else {
