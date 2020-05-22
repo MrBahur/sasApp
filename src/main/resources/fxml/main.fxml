@@ -17,8 +17,8 @@
                 </image>
             </ImageView>
             <JFXButton fx:id="personalArea" buttonType="RAISED" onAction="#showPersonalArea" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Personal Area" />
-            <JFXButton fx:id="teams" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#showTeams" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Leagues" />
-            <JFXButton fx:id="leagues" buttonType="RAISED" layoutX="10.0" layoutY="197.0" onAction="#showLeagues" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Teams" />
+            <JFXButton fx:id="teams" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#showTeams" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Teams" />
+            <JFXButton fx:id="leagues" buttonType="RAISED" layoutX="10.0" layoutY="197.0" onAction="#showLeagues" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Leagues" />
             <JFXButton fx:id="games" buttonType="RAISED" layoutX="10.0" layoutY="197.0" onAction="#showGames" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Games" />
             <JFXButton fx:id="exit" buttonType="RAISED" layoutX="10.0" layoutY="271.0" onAction="#exit" prefHeight="80.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Exit" />
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
