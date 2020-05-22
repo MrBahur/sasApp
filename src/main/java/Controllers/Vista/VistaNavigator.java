@@ -26,6 +26,7 @@ public class VistaNavigator {
     public static final String VISTA_2 = "/fxml/vista2.fxml";
     public static final String LOGIN = "/fxml/login.fxml";
     public static final String TEAM = "/fxml/team.fxml";
+    public static final String REGISTER = "/fxml/register.fxml";
 
 
     /**
