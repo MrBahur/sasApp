@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.text.Text?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.effect.Glow?>
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.TeamsController" prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Text layoutX="277.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="teams" />
-        <JFXButton fx:id="teamBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="525.0" layoutY="17.0" onAction="#enterTeamPage" style="-fx-border-color: white;" text="Hapoel" textFill="black">
-            <effect>
-                <Glow />
-            </effect>
-        </JFXButton>
-    </children>
+<AnchorPane fx:id="teamsPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TeamsController">
 </AnchorPane>
