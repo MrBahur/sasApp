@@ -16,11 +16,14 @@ public class VistaNavigator {
     /**
      * Convenience constants for fxml layouts managed by the navigator.
      */
-    public static final String MAIN = "/fxml/main.fxml";
     public static final String PERSONAL = "/fxml/personalArea.fxml";
     public static final String LEAGUES = "/fxml/leagues.fxml";
     public static final String TEAMS = "/fxml/teams.fxml";
     public static final String PLAYERS = "/fxml/players.fxml";
+    public static final String ANIMATION = "/fxml/animation.fxml";
+    public static final String WIZARDVIEW = "/fxml/wizard/wizardView.fxml";
+    public static final String WELCOME = "/fxml/welcome.fxml";
+    public static final String MAIN = "/fxml/main.fxml";
     public static final String GAMES = "/fxml/games.fxml";
     public static final String VISTA_1 = "/fxml/vista1.fxml";
     public static final String VISTA_2 = "/fxml/vista2.fxml";

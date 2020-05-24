@@ -1,21 +1,28 @@
-import Controllers.MainController;
+package Main;
+
 import Controllers.Vista.VistaNavigator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 /**
- * Main application class.
+ * Main.Main application class.
  */
 public class Main extends Application {
 
+    public static Boolean isSplashLoaded = false;
+
+
+
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Vista Viewer");
+        stage.setTitle("DeYMCA");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(createScene(loadMainPane()));
         stage.show();
     }
@@ -30,10 +37,9 @@ public class Main extends Application {
      */
     private Pane loadMainPane() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.MAIN));
-        MainController mainController = loader.getController();
-        VistaNavigator.setMainController(mainController);
-//        VistaNavigator.loadVista(VistaNavigator.REGISTER);
+        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.ANIMATION));
+        //MainController mainController = loader.getController();
+        //VistaNavigator.setMainController(mainController);
         return mainPane;
     }
 
@@ -48,7 +54,7 @@ public class Main extends Application {
                 mainPane
         );
         scene.getStylesheets().setAll(
-                getClass().getResource("css/vista.css").toExternalForm()
+                getClass().getResource("/css/vista.css").toExternalForm()
         );
 
         return scene;
