@@ -39,6 +39,14 @@ public class MainController {
         this.userName.setText(userName);
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public String getUserName() {
+        return userName.getText();
+    }
+
     public void setVista(Node node) {
         vistaHolder.getChildren().setAll(node);
     }
