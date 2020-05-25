@@ -55,6 +55,19 @@ public class WelcomeController implements Initializable {
 
 
     public void handleRegister(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        Pane mainPane = null;
+        try {
+            mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.REGISTER));
+        } catch (IOException e) {
+        }
+        stage.close();
+        Scene scene = new Scene(mainPane);
+        stage.setTitle("DeYMCA");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleGuestLogin(ActionEvent actionEvent) {

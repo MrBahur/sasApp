@@ -3,7 +3,12 @@ package Controllers;
 import Controllers.Vista.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -24,7 +29,29 @@ public class registerController {
     @FXML private javafx.scene.control.ComboBox occupation;
 
 
-    public void register(ActionEvent actionEvent) {
+    public void handleSubmit(ActionEvent actionEvent) {
+        register();
+        showWelcomeScreen(actionEvent);
+    }
+
+    private void showWelcomeScreen(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        Pane mainPane = null;
+        try {
+            mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.WELCOME));
+        } catch (IOException e) {
+        }
+        stage.close();
+        Scene scene = new Scene(mainPane);
+        stage.setTitle("DeYMCA");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void register() {
 
         //check that all fields are full
 
@@ -55,11 +82,11 @@ public class registerController {
                     if (entity != null) {
                         String result = EntityUtils.toString(entity);
                         if (result.equals("Created")) {
-                            Alert alert = new Alert(Alert.AlertType.NONE);
-                            alert.setContentText("Your account was created successfully. Please login to continue.");
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setContentText("Your account was created successfully.");
                             alert.show();
                             //move to login
-                            VistaNavigator.loadVista(VistaNavigator.LOGIN);
+                            //VistaNavigator.loadVista(VistaNavigator.LOGIN);
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setContentText("Your details are invalid.\nPlease try again.");

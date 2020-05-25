@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -109,7 +111,19 @@ public class WizardController implements Initializable {
 
     public void finishWizard(ActionEvent actionEvent) {
         activateSystem();
-
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        Pane mainPane = null;
+        try {
+            mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.WELCOME));
+        } catch (IOException e) {
+        }
+        stage.close();
+        Scene scene = new Scene(mainPane);
+        stage.setTitle("DeYMCA");
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void activateSystem() {
