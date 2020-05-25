@@ -47,40 +47,28 @@ public class GamesController implements Initializable {
 
         table.setEditable(true);
 
-        TableColumn<Game, String> gameIdColumn = new TableColumn<>("ID");
-        gameIdColumn.setMinWidth(40);
-        gameIdColumn.setCellValueFactory(new PropertyValueFactory<>("gameID"));
-
         TableColumn<Game, String> gameDateColumn = new TableColumn<>("Date");
-        gameDateColumn.setMinWidth(60);
         gameDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn<Game, String> gameYearColumn = new TableColumn<>("Year");
-        gameYearColumn.setMinWidth(20);
+        TableColumn<Game, String> gameYearColumn = new TableColumn<>("Season");
         gameYearColumn.setCellValueFactory(new PropertyValueFactory<>("seasonYear"));
 
-        TableColumn<Game, String> hostTeamNameColumn = new TableColumn<>("Host Team");
-        hostTeamNameColumn.setMinWidth(100);
+        TableColumn<Game, String> hostTeamNameColumn = new TableColumn<>("Host");
         hostTeamNameColumn.setCellValueFactory(new PropertyValueFactory<>("hostTeamName"));
 
-        TableColumn<Game, String> guestTeamNameColumn = new TableColumn<>("Guest Team");
-        guestTeamNameColumn.setMinWidth(100);
+        TableColumn<Game, String> guestTeamNameColumn = new TableColumn<>("Guest");
         guestTeamNameColumn.setCellValueFactory(new PropertyValueFactory<>("guestTeamName"));
 
         TableColumn<Game, String> hostScoreColumn = new TableColumn<>("Host Score");
-        hostScoreColumn.setMinWidth(5);
         hostScoreColumn.setCellValueFactory(new PropertyValueFactory<>("hostScore"));
 
         TableColumn<Game, String> guestScoreColumn = new TableColumn<>("Guest Score");
-        guestScoreColumn.setMinWidth(5);
         guestScoreColumn.setCellValueFactory(new PropertyValueFactory<>("guestScore"));
 
-        TableColumn<Game, String> leagueNameColumn = new TableColumn<>("League Name");
-        leagueNameColumn.setMinWidth(100);
+        TableColumn<Game, String> leagueNameColumn = new TableColumn<>("League");
         leagueNameColumn.setCellValueFactory(new PropertyValueFactory<>("leagueName"));
 
-        TableColumn<Game, String> stadiumNameColumn = new TableColumn<>("Stadium Name");
-        stadiumNameColumn.setMinWidth(100);
+        TableColumn<Game, String> stadiumNameColumn = new TableColumn<>("Stadium");
         stadiumNameColumn.setCellValueFactory(new PropertyValueFactory<>("stadiumName"));
 
         ObservableList<Game> data = getDataFromServer();
@@ -96,7 +84,7 @@ public class GamesController implements Initializable {
             });
             return row;
         });
-        table.getColumns().addAll(gameIdColumn, gameDateColumn, gameYearColumn, hostTeamNameColumn, guestTeamNameColumn,
+        table.getColumns().addAll(gameDateColumn, gameYearColumn, hostTeamNameColumn, guestTeamNameColumn,
                 hostScoreColumn, guestScoreColumn, leagueNameColumn, stadiumNameColumn);
 
         final VBox vbox = new VBox();
