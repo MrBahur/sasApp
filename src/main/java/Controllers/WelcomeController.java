@@ -81,6 +81,7 @@ public class WelcomeController implements Initializable {
                     }
                     // Get the Controller from the FXMLLoader
                     MainController mainController = loader.getController();
+                    VistaNavigator.setMainController(loader.getController());
                     // Set data in the controller
                     mainController.setUserName(userName);
                     mainController.setUserRole(response);
