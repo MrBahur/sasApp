@@ -1,18 +1,24 @@
 package Controllers;
 
+import Controllers.Vista.VistaNavigator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -80,6 +86,16 @@ public class GamesController implements Initializable {
         ObservableList<Game> data = getDataFromServer();
 
         table.setItems(data);
+        table.setRowFactory(tv -> {
+            TableRow<Game> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !(row.isEmpty())) {
+                    Game rowData = row.getItem();
+                    openGame(rowData);
+                }
+            });
+            return row;
+        });
         table.getColumns().addAll(gameIdColumn, gameDateColumn, gameYearColumn, hostTeamNameColumn, guestTeamNameColumn,
                 hostScoreColumn, guestScoreColumn, leagueNameColumn, stadiumNameColumn);
 
@@ -91,6 +107,26 @@ public class GamesController implements Initializable {
         gamePane.getChildren().add(vbox);
 
 
+    }
+
+    private void openGame(Game rowData) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.GAME));
+            Parent root = loader.load();
+            GameController gameController = loader.getController();
+
+            gameController.init(rowData.getGuestTeamName(), rowData.getHostTeamName(), rowData.getGuestScore(), rowData.getHostScore(), rowData.getGameID());
+            Scene newScene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setMaxHeight(640);
+            newStage.setMaxWidth(620);
+            newStage.setScene(newScene);
+            newStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private ObservableList<Game> getDataFromServer() {
@@ -114,7 +150,7 @@ public class GamesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        list.add(new Game("gameID", "date", "hostScore", "guestScore", "LeagueName", "hostName", "guestName", "stadiumName", "year"));//for test, remove later
         return list;
     }
 

@@ -25,6 +25,7 @@ public class VistaNavigator {
     public static final String WELCOME = "/fxml/welcome.fxml";
     public static final String MAIN = "/fxml/main.fxml";
     public static final String GAMES = "/fxml/games.fxml";
+    public static final String GAME = "/fxml/game.fxml";
     public static final String VISTA_1 = "/fxml/vista1.fxml";
     public static final String VISTA_2 = "/fxml/vista2.fxml";
     public static final String LOGIN = "/fxml/login.fxml";
