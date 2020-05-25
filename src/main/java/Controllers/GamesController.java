@@ -13,7 +13,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -84,8 +94,27 @@ public class GamesController implements Initializable {
     }
 
     private ObservableList<Game> getDataFromServer() {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
         ObservableList<Game> list = FXCollections.observableArrayList();
-        list.add(new Game("10000", "20/20/2020", "9", "9", "very long name", "very long name", "very long name", "very long name", "1992"));
+        try {
+            HttpGet request = new HttpGet(MainController.serverURL + "/games/get");
+            //create the request
+            request.getRequestLine();
+            request.addHeader("Content-Type", "application/json");
+
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                HttpEntity entity = response.getEntity();
+                String result = EntityUtils.toString(entity);
+                JSONObject res = new JSONObject(result);
+                JSONArray array = res.getJSONArray("games");
+                for (int i = 0; i < array.length(); i++) {
+                    list.add(new Game(array.getJSONObject(i)));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return list;
     }
 
@@ -111,6 +140,18 @@ public class GamesController implements Initializable {
             this.guestScore = new SimpleStringProperty(guestScore);
             this.leagueName = new SimpleStringProperty(leagueName);
             this.stadiumName = new SimpleStringProperty(stadiumName);
+        }
+
+        public Game(JSONObject jsonGameObject) {
+            this.gameID = new SimpleStringProperty(Integer.toString(jsonGameObject.getInt("game_id")));
+            this.date = new SimpleStringProperty(jsonGameObject.getString("date"));
+            this.seasonYear = new SimpleStringProperty(Integer.toString(jsonGameObject.getInt("season_year")));
+            this.hostTeamName = new SimpleStringProperty(jsonGameObject.getString("host_team_name"));
+            this.guestTeamName = new SimpleStringProperty(jsonGameObject.getString("guest_team_name"));
+            this.hostScore = new SimpleStringProperty(Integer.toString(jsonGameObject.getInt("host_score")));
+            this.guestScore = new SimpleStringProperty(Integer.toString(jsonGameObject.getInt("guest_score")));
+            this.leagueName = new SimpleStringProperty(jsonGameObject.getString("league_name"));
+            this.stadiumName = new SimpleStringProperty(jsonGameObject.getString("stadium_name"));
         }
 
         public String getGameID() {
