@@ -8,6 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.json.JSONObject;
 import view.Controller;
 
 public class MainController {
@@ -53,7 +59,30 @@ public class MainController {
 
     @FXML
     private void exit(ActionEvent event) {
+        sendExit(userName);
         System.exit(0);
+    }
+
+    private void sendExit(JFXTextField userName) {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+
+        try {
+            HttpPost request = new HttpPost(MainController.serverURL + "/users/exit");
+
+            JSONObject json = new JSONObject();
+            json.put("username", userName.getText());
+
+            //create the request
+            StringEntity stringEntity = new StringEntity(json.toString());
+            request.getRequestLine();
+            request.setEntity(stringEntity);
+            request.addHeader("Content-Type", "application/json");
+
+            CloseableHttpResponse response = httpClient.execute(request);
+        }
+        catch (Exception e) {
+
+        }
     }
 
     @FXML
