@@ -87,7 +87,12 @@ public class MainController {
 
     @FXML
     public void showPersonalArea(ActionEvent actionEvent) {
-        VistaNavigator.loadVista(VistaNavigator.PERSONAL);
+        switch (userRole){
+            case "team_owner":
+                VistaNavigator.loadVista(VistaNavigator.PERSONAL_TEAM_OWNER);
+                //TODO: other roles
+
+        }
     }
 
     @FXML

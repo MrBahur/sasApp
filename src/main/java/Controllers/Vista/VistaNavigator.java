@@ -16,7 +16,7 @@ public class VistaNavigator {
     /**
      * Convenience constants for fxml layouts managed by the navigator.
      */
-    public static final String PERSONAL = "/fxml/personalArea.fxml";
+    public static final String PERSONAL_TEAM_OWNER = "/fxml/personalAreaTeamOwner.fxml";
     public static final String LEAGUES = "/fxml/leagues.fxml";
     public static final String TEAMS = "/fxml/teams.fxml";
     public static final String PLAYERS = "/fxml/players.fxml";
