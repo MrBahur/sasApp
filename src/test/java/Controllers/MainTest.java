@@ -17,6 +17,10 @@ import static org.junit.Assert.*;
 
 public abstract class MainTest extends ApplicationTest {
 
+    /**
+     * This will start the application for the tests
+     * @throws Exception
+     */
     @Before
     public void setUpClass() throws Exception {
         ApplicationTest.launch(Main.class);
@@ -27,6 +31,10 @@ public abstract class MainTest extends ApplicationTest {
         stage.show();
     }
 
+    /**
+     * This is s teardown functions the will release any unwanted "clicks" at the end of each test
+     * @throws TimeoutException
+     */
     @After
     public void afterEachTest() throws TimeoutException{
         FxToolkit.hideStage();
@@ -34,6 +42,12 @@ public abstract class MainTest extends ApplicationTest {
         release(new MouseButton[]{});
     }
 
+    /**
+     * with this function you return elements from your fxml. good for checking things.
+     * @param query the fx:id of the element
+     * @param <T>
+     * @return
+     */
     public <T extends Node> T find(String query){
         return (T) lookup(query).queryAll().iterator().next();
     }
