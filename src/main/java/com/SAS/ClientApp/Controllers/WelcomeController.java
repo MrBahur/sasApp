@@ -37,6 +37,7 @@ public class WelcomeController implements Initializable {
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private boolean initDone;
+    private Pane mainPane;
 
     @FXML
     private Label lblErrors;
@@ -56,7 +57,6 @@ public class WelcomeController implements Initializable {
     @FXML
     private Button btnSignup;
 
-    @FXML private Pane mainPane;
 
     @FXML private Stage stage;
 
@@ -65,7 +65,7 @@ public class WelcomeController implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        Pane mainPane = null;
+        mainPane = null;
         try {
             mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.REGISTER));
         } catch (IOException e) {
@@ -83,7 +83,7 @@ public class WelcomeController implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             //stage.close();
             FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
-            Pane mainPane = null;
+            mainPane = null;
             try {
                 mainPane = (Pane) loader.load();
             } catch (IOException e) {
