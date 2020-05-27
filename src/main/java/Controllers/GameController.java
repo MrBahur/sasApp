@@ -3,6 +3,8 @@ package Controllers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -21,6 +23,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
@@ -37,7 +40,7 @@ public class GameController implements Initializable {
 
     }
 
-    public void init(String guestTeamName, String hostTeamName, String guestScore, String hostScore, String gameID) {
+    public void init(String guestTeamName, String hostTeamName, String guestScore, String hostScore, String gameID, LocalDate gameDate) {
         this.guest_team_name.setText(guestTeamName);
         this.guest_team_score.setText(guestScore);
         this.host_team_name.setText(hostTeamName);
@@ -61,6 +64,41 @@ public class GameController implements Initializable {
         events_table.getColumns().addAll(gameMinuteColumn, typeColumn, descriptionColumn);
         events_table.getSortOrder().add(gameMinuteColumn);
 
+        add_event_btn.setOnAction(event -> addEventToGame(gameID, gameDate));
+
+    }
+
+    private void addEventToGame(String gameID, LocalDate gameDate) {
+        //test if the game can be edited (24 hours after it end)
+        if (LocalDate.now().minusDays(1).isEqual(gameDate) || LocalDate.now().isEqual(gameDate)) {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            //check if the referee is in the game
+            try {
+                HttpGet request = new HttpGet(MainController.serverURL + String.format("/games/referee/%s", gameID));
+                request.getRequestLine();
+                request.addHeader("Content-Type", "application/json");
+                try (CloseableHttpResponse response = httpClient.execute(request)) {
+                    HttpEntity entity = response.getEntity();
+                    String result = EntityUtils.toString(entity);
+                    JSONObject res = new JSONObject(result);
+                    JSONArray refs = res.getJSONArray("refs");
+                    boolean canEdit = false;
+                    for (int i = 0; !canEdit && i < refs.length(); i++) {
+                        String loggedInID = MainController.userID;
+                        canEdit = loggedInID.equals(refs.getInt(i) + "");
+                    }
+                    if (canEdit) {
+                        //do the add game shit
+                    } else {
+                        System.out.println("can't edit cuz of permissions");
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("can't edit cuz of time after game");
+        }
     }
 
     private ObservableList<Event> getEventsFromServer(String gameID) {

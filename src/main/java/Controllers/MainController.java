@@ -16,6 +16,8 @@ public class MainController {
 
     private String userRole;
 
+    public static String userID;
+
     @FXML
     private JFXTextField userName;
     @FXML
