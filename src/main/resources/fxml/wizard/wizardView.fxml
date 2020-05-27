@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.wizard.WizardController">
+<AnchorPane prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.wizard.WizardController">
    <Button fx:id="exitBtn" layoutX="706.0" layoutY="596.0" mnemonicParsing="false" onAction="#exitWizard" prefHeight="30.0" prefWidth="80.0" text="Cancel" />
    <Button fx:id="nextBtn" layoutX="600.0" layoutY="596.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="30.0" prefWidth="80.0" text="Next&gt;" />
    <Button fx:id="prevBtn" layoutX="506.0" layoutY="596.0" mnemonicParsing="false" onAction="#previousPage" prefHeight="30.0" prefWidth="80.0" text="&lt;Back" />

@@ -8,23 +8,23 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="306.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PersonalAreaControllerTeamOwner">
-   <children>
-      <Text layoutX="98.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your new team's name and click on &quot;Confirm&quot;">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </Text>
-      <Label layoutX="151.0" layoutY="101.0" text="Team name:">
-         <font>
-            <Font name="Arial Bold" size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="newTeamName" layoutX="283.0" layoutY="99.0" prefHeight="25.0" prefWidth="179.0" />
-      <Button fx:id="registerbtn" layoutX="245.0" layoutY="176.0" mnemonicParsing="false" onAction="#registerRequest" prefHeight="35.0" prefWidth="111.0" text="Confirm">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane prefHeight="306.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.PersonalAreaControllerTeamOwner">
+    <children>
+        <Text layoutX="98.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your new team's name and click on &quot;Confirm&quot;">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Text>
+        <Label layoutX="151.0" layoutY="101.0" text="Team name:">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="newTeamName" layoutX="283.0" layoutY="99.0" prefHeight="25.0" prefWidth="179.0" />
+        <Button fx:id="registerbtn" layoutX="245.0" layoutY="176.0" mnemonicParsing="false" onAction="#registerRequest" prefHeight="35.0" prefWidth="111.0" text="Confirm">
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

@@ -11,8 +11,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="teamPage" prefHeight="640.0" prefWidth="660.0" style="-fx-background-image: url('/images/background60.jpg');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TeamController">
-    <children>
+<AnchorPane fx:id="teamPage" prefHeight="640.0" prefWidth="660.0" style="-fx-background-image: url('/images/background60.jpg');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.TeamController">
+   <children>
       <AnchorPane fx:id="teamFrame" layoutX="-2.0" layoutY="28.0" prefHeight="496.0" prefWidth="641.0">
          <children>
             <Label contentDisplay="CENTER" layoutX="2.0" layoutY="195.0" prefHeight="17.0" prefWidth="660.0" style="-fx-background-color: white;" text="                                                                   Team Players" textAlignment="CENTER">
@@ -80,7 +80,7 @@
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </JFXButton>
-    </children>
+   </children>
    <effect>
       <Blend />
    </effect>

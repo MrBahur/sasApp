@@ -12,17 +12,17 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="578.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PersonalAreaControllerTeamOwner">
+<AnchorPane prefHeight="578.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.PersonalAreaControllerTeamOwner">
    <children>
       <TabPane layoutX="13.0" layoutY="9.0" prefHeight="553.0" prefWidth="622.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Personal details">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="640.0">
+         <tabs>
+            <Tab text="Personal details">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="640.0">
                      <children>
                         <SplitPane fx:id="split" dividerPositions="0.5" layoutX="-1.0" orientation="VERTICAL" prefHeight="355.0" prefWidth="575.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <items>
-                            <AnchorPane fx:id="personal" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="620.0" style="-fx-border-color: grey;">
+                           <items>
+                              <AnchorPane fx:id="personal" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="620.0" style="-fx-border-color: grey;">
                                  <children>
                                     <Label layoutX="41.0" layoutY="62.0" text="Name:" textFill="GREY">
                                        <font>
@@ -50,7 +50,7 @@
                                     <Button layoutX="570.0" layoutY="5.0" mnemonicParsing="false" onAction="#editDetails" prefHeight="27.0" prefWidth="30.0" style="-fx-background-image: url('/images/edit1.png');" />
                                  </children>
                               </AnchorPane>
-                            <AnchorPane fx:id="role" minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="573.0" style="-fx-border-color: grey;">
+                              <AnchorPane fx:id="role" minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="573.0" style="-fx-border-color: grey;">
                                  <children>
                                     <Label layoutX="55.0" layoutY="91.0" text="Team name:" textFill="GREY">
                                        <font>
@@ -73,41 +73,41 @@
                                     <Button fx:id="cancelbtn" cancelButton="true" layoutX="311.0" layoutY="220.0" mnemonicParsing="false" onAction="#cancelDetails" text="Cancel" visible="false" />
                                  </children>
                               </AnchorPane>
-                          </items>
+                           </items>
                         </SplitPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Custom role actions">
-                <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
-                        <children>
-                            <AnchorPane layoutX="3.0" prefHeight="521.0" prefWidth="615.0" style="-fx-border-color: grey;">
-                                <children>
-                                    <Button layoutX="245.0" layoutY="66.0" mnemonicParsing="false" onAction="#registerTeam" text="Apply" />
-                                    <Button layoutX="245.0" layoutY="127.0" mnemonicParsing="false" onAction="#checkTeamStatus" text="Apply" />
-                                    <Label layoutX="83.0" layoutY="70.0" prefHeight="20.0" prefWidth="151.0" text="Register a new team">
-                                        <font>
-                                            <Font name="Arial Bold" size="14.0" />
-                                        </font>
-                                    </Label>
-                                    <Label layoutX="83.0" layoutY="130.0" text="Check team status">
-                                        <font>
-                                            <Font name="Arial Bold" size="14.0" />
-                                        </font>
-                                    </Label>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="192.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" >
-                                    <image>
-                                        <Image url="@/images/people1.png" />
-                                    </image>
-                              </ImageView>
-                                </children>
-                            </AnchorPane>
-                        </children></AnchorPane>
-                </content>
+               </content>
             </Tab>
-        </tabs>
+            <Tab text="Custom role actions">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <AnchorPane layoutX="3.0" prefHeight="521.0" prefWidth="615.0" style="-fx-border-color: grey;">
+                           <children>
+                              <Button layoutX="245.0" layoutY="66.0" mnemonicParsing="false" onAction="#registerTeam" text="Apply" />
+                              <Button layoutX="245.0" layoutY="127.0" mnemonicParsing="false" onAction="#checkTeamStatus" text="Apply" />
+                              <Label layoutX="83.0" layoutY="70.0" prefHeight="20.0" prefWidth="151.0" text="Register a new team">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="83.0" layoutY="130.0" text="Check team status">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="192.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" >
+                                 <image>
+                                    <Image url="@/images/people1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
       </TabPane>
    </children>
 </AnchorPane>

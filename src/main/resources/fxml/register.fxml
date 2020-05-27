@@ -14,7 +14,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" prefHeight="446.0"
-          prefWidth="617.0" style="-fx-background-color: #5E757F;" vgap="10" fx:controller="Controllers.registerController">
+          prefWidth="617.0" style="-fx-background-color: #5E757F;" vgap="10" fx:controller="com.SAS.ClientApp.Controllers.registerController">
     <padding>
         <Insets bottom="40" left="40" right="40" top="40" />
     </padding>
