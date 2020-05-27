@@ -75,6 +75,10 @@ public class MainController {
         this.personalDetails = personalDetails;
     }
 
+    public void setUserID(String userID) {
+        MainController.userID = userID;
+    }
+
     @FXML
     private void exit(ActionEvent event) {
         sendExit(userName);

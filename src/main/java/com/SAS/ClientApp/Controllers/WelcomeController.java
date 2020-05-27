@@ -31,6 +31,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class WelcomeController implements Initializable {
@@ -115,12 +116,15 @@ public class WelcomeController implements Initializable {
             response = sendLoginRequest();
             if (!response.equals("Failed")) {
                 try {
+                    JSONObject res = new JSONObject(response);
+                    String role = res.get("role").toString();
+                    String userID = res.get("user_id").toString();
                     Node node = (Node) actionEvent.getSource();
                     stage = (Stage) node.getScene().getWindow();
                     //stage.close();
                     Callable<Boolean> initDetails = () -> {
                         try {
-                            return setPersonalArea(userName, response);
+                            return setPersonalArea(userName, role, userID);
                         } catch (Exception e) {
                             throw new IllegalStateException("task interrupted", e);
                         }
@@ -212,7 +216,7 @@ public class WelcomeController implements Initializable {
         System.out.println(text);
     }
 
-    private boolean setPersonalArea(String username, String role) {
+    private boolean setPersonalArea(String username,  String role, String userID) {
         String response = sendDetailsRequest(username, role);
         if (!response.equals("Failed")) {
             // parsing JSON
@@ -225,6 +229,7 @@ public class WelcomeController implements Initializable {
                     try {
                         mainPane = (Pane) loader.load();
                     } catch (IOException e) {
+                        e.printStackTrace();
                     }
                     // Get the Controller from the FXMLLoader
                     MainController mainController = loader.getController();
@@ -233,6 +238,7 @@ public class WelcomeController implements Initializable {
                     mainController.setPersonalDetails(details);
                     mainController.setUserName(username);
                     mainController.setUserRole(role);
+                    mainController.setUserID(userID);
 
 //                    PersonalAreaControllerTeamOwner controller = loader.getController();
 //                    // Set data in the controller
