@@ -45,6 +45,10 @@ public class MainController {
         this.userName.setText(userName);
     }
 
+    public void setPersonalArea(boolean isDisable) {
+        personalArea.setDisable(isDisable);
+    }
+
     public String getUserRole() {
         return userRole;
     }
