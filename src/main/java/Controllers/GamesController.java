@@ -98,7 +98,6 @@ public class GamesController implements Initializable {
     }
 
     private void openGame(Game rowData) {
-
         try {
             FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.GAME));
             Parent root = loader.load();
@@ -138,7 +137,7 @@ public class GamesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        list.add(new Game("gameID", "date", "hostScore", "guestScore", "LeagueName", "hostName", "guestName", "stadiumName", "year"));//for test, remove later
+        //list.add(new Game("gameID", "date", "hostScore", "guestScore", "LeagueName", "hostName", "guestName", "stadiumName", "year"));//for test, remove later
         return list;
     }
 
