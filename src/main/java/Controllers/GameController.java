@@ -24,6 +24,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
@@ -69,8 +71,10 @@ public class GameController implements Initializable {
     }
 
     private void addEventToGame(String gameID, LocalDate gameDate) {
-        //test if the game can be edited (24 hours after it end)
-        if (LocalDate.now().minusDays(1).isEqual(gameDate) || LocalDate.now().isEqual(gameDate)) {
+        //test if the game can be edited (5 hours after it end) and after it starts.
+        LocalTime gameHour = LocalTime.of(20, 0);
+        LocalDateTime gameTime = LocalDateTime.of(gameDate, gameHour);
+        if (LocalDateTime.now().isBefore(gameTime.plusHours(6).plusMinutes(30)) && LocalDateTime.now().isAfter(gameTime)) {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             //check if the referee is in the game
             try {
