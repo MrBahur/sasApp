@@ -77,6 +77,31 @@ public class WelcomeController implements Initializable {
     }
 
     public void handleGuestLogin(ActionEvent actionEvent) {
+        try {
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            //stage.close();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
+            Pane mainPane = null;
+            try {
+                mainPane = (Pane) loader.load();
+            } catch (IOException e) {
+            }
+            // Get the Controller from the FXMLLoader
+            MainController mainController = loader.getController();
+            VistaNavigator.setMainController(loader.getController());
+            // Set data in the controller
+            mainController.setUserName("Guest");
+            mainController.setUserRole("GUEST");
+            mainController.setPersonalArea(true);
+            stage.close();
+            Scene scene = new Scene(mainPane);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e){
+
+        }
     }
 
     public void handleLogin(ActionEvent actionEvent) {
@@ -132,7 +157,6 @@ public class WelcomeController implements Initializable {
             CloseableHttpResponse response = httpClient.execute(request);
 
             try {
-
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     result = EntityUtils.toString(entity);

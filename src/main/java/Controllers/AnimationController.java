@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -108,7 +110,7 @@ public class AnimationController implements Initializable {
                 res = EntityUtils.toString(entity, "UTF-8");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return "bad";
         } finally {
             try {
@@ -131,7 +133,18 @@ public class AnimationController implements Initializable {
                     public void run() {
                         if (systemStatus.equals("true")) {
                             loadWelcomeWindow();
-                        } else {
+                        }
+                        else if(systemStatus.equals("bad")){
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("There was a problem connecting to our servers. \n" +
+                                    "Please call our IT service or try again later");
+
+                            if(alert.showAndWait().filter(ButtonType.OK::equals).isPresent()){
+                                System.exit(0);
+                            }
+                            System.exit(0);
+                        }
+                        else {
                             loadInitWindow();
                         }
                     }

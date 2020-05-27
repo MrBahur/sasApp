@@ -28,6 +28,8 @@ public class MainController {
     private JSONObject personalDetails;
     private String userRole;
 
+    public static String userID;
+
     @FXML
     private JFXTextField userName;
     @FXML
@@ -50,6 +52,10 @@ public class MainController {
 
     public void setUserName(String userName) {
         this.userName.setText(userName);
+    }
+
+    public void setPersonalArea(boolean isDisable) {
+        personalArea.setDisable(isDisable);
     }
 
     public String getUserRole() {

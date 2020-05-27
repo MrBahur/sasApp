@@ -31,6 +31,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class GamesController implements Initializable {
@@ -98,13 +100,11 @@ public class GamesController implements Initializable {
     }
 
     private void openGame(Game rowData) {
-
         try {
             FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.GAME));
             Parent root = loader.load();
             GameController gameController = loader.getController();
-
-            gameController.init(rowData.getGuestTeamName(), rowData.getHostTeamName(), rowData.getGuestScore(), rowData.getHostScore(), rowData.getGameID());
+            gameController.init(rowData.getGuestTeamName(), rowData.getHostTeamName(), rowData.getGuestScore(), rowData.getHostScore(), rowData.getGameID(), LocalDate.parse(rowData.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             Scene newScene = new Scene(root);
             Stage newStage = new Stage();
             newStage.setMaxHeight(640);
@@ -138,7 +138,7 @@ public class GamesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        list.add(new Game("gameID", "date", "hostScore", "guestScore", "LeagueName", "hostName", "guestName", "stadiumName", "year"));//for test, remove later
+        //list.add(new Game("gameID", "date", "hostScore", "guestScore", "LeagueName", "hostName", "guestName", "stadiumName", "year"));//for test, remove later
         return list;
     }
 
