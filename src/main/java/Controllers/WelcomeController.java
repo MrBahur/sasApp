@@ -106,7 +106,7 @@ public class WelcomeController implements Initializable {
             setLblError(Color.TOMATO, "Empty credentials");
         } else {
             response = sendLoginRequest();
-            if(!response.equals("Failed")){
+            if (!response.equals("Failed")) {
                 try {
                     Node node = (Node) actionEvent.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
@@ -122,20 +122,21 @@ public class WelcomeController implements Initializable {
                     VistaNavigator.setMainController(loader.getController());
                     // Set data in the controller
                     mainController.setUserName(userName);
-                    mainController.setUserRole(response);
+                    JSONObject roleAndUserID = new JSONObject(response);
+                    mainController.setUserRole(roleAndUserID.getString("role"));
+                    MainController.userID = roleAndUserID.getString("user_id");
                     stage.close();
                     Scene scene = new Scene(mainPane);
                     stage.setScene(scene);
                     stage.show();
-                }
-                catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
         }
     }
 
-    private String sendLoginRequest(){
+    private String sendLoginRequest() {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String result = "";
         try {
@@ -154,7 +155,6 @@ public class WelcomeController implements Initializable {
             CloseableHttpResponse response = httpClient.execute(request);
 
             try {
-
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     result = EntityUtils.toString(entity);
