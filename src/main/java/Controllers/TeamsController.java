@@ -40,7 +40,7 @@ public class TeamsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final Label label = new Label("Teams");
-        label.setFont(new Font("Arial", 24));
+        label.setFont(new Font("Arial Rounded MT Bold", 24));
         label.setPadding(new Insets(0, 0, 10, 160));
 
         TableView tableView = new TableView<TeamsViewer>();
