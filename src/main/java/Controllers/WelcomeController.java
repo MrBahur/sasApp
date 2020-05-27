@@ -84,9 +84,9 @@ public class WelcomeController implements Initializable {
                     VistaNavigator.setMainController(loader.getController());
                     // Set data in the controller
                     mainController.setUserName(userName);
-                    JSONObject bla = new JSONObject(response);
-                    mainController.setUserRole(bla.getString("role"));
-                    MainController.userID = bla.getString("user_id");
+                    JSONObject roleAndUserID = new JSONObject(response);
+                    mainController.setUserRole(roleAndUserID.getString("role"));
+                    MainController.userID = roleAndUserID.getString("user_id");
                     stage.close();
                     Scene scene = new Scene(mainPane);
                     stage.setScene(scene);
