@@ -23,8 +23,8 @@ public class MainController {
 
     public static final String serverURL = "http://localhost:8080";
     private JSONObject personalDetails;
-    private String userRole;
-
+    public static String userRole;
+    public static String username;
     public static String userID;
 
     @FXML
@@ -49,6 +49,7 @@ public class MainController {
 
     public void setUserName(String userName) {
         this.userName.setText(userName);
+        this.username = userName;
     }
 
     public void setPersonalArea(boolean isDisable) {

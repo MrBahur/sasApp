@@ -25,7 +25,7 @@
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Label>
-            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="202.0" layoutY="225.0" prefHeight="200.0" prefWidth="250.0"/>
+            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="202.0" layoutY="225.0" prefHeight="200.0" prefWidth="250.0" />
             <Text fx:id="teamName" fill="#f20d0d" fontSmoothingType="LCD" layoutX="230.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.47006225585938">
                <font>
                   <Font name="Arial Rounded MT Bold" size="36.0" />
@@ -70,9 +70,17 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <JFXButton fx:id="closeBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="557.0" layoutY="11.0" onAction="#closeOpenTeam" style="-fx-border-color: white;" text="Close team" textFill="black">
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="531.0" layoutY="30.0" onAction="#edit" style="-fx-border-color: white;" text="Edit" textFill="black">
+      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="554.0" layoutY="14.0" onAction="#edit" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: white;" text="Edit team" textFill="black">
          <effect>
             <Glow />
          </effect>
