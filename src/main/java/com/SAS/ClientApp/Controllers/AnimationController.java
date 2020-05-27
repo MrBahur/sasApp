@@ -26,7 +26,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 public class AnimationController implements Initializable {
-
     @FXML private StackPane rootPane;
     private static String systemStatus;
     private ExecutorService executor;
@@ -84,8 +83,8 @@ public class AnimationController implements Initializable {
             mainPane = (Pane) loader.load(getClass().getResourceAsStream(VistaNavigator.WELCOME));
         } catch (IOException e) {
         }
-      //  MainController mainController = loader.getController();
-      //  VistaNavigator.setMainController(mainController);
+        //  MainController mainController = loader.getController();
+        //  VistaNavigator.setMainController(mainController);
         Scene scene = new Scene(mainPane);
         Stage stage = new Stage();
         stage.setTitle("DeYMCA");
@@ -153,5 +152,4 @@ public class AnimationController implements Initializable {
             }
         }
     }
-
 }

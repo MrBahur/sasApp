@@ -5,8 +5,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -15,11 +17,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 public class MainController {
 
     public static final String serverURL = "http://localhost:8080";
-
+    private JSONObject personalDetails;
     private String userRole;
+
+    public static String userID;
 
     @FXML
     private JFXTextField userName;
@@ -35,6 +41,7 @@ public class MainController {
     private JFXButton games;
     @FXML
     private JFXButton exit;
+
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
@@ -58,6 +65,14 @@ public class MainController {
 
     public void setVista(Node node) {
         vistaHolder.getChildren().setAll(node);
+    }
+
+    public JSONObject getPersonalDetails() {
+        return this.personalDetails;
+    }
+
+    public void setPersonalDetails(JSONObject personalDetails) {
+        this.personalDetails = personalDetails;
     }
 
     @FXML
@@ -90,7 +105,25 @@ public class MainController {
 
     @FXML
     public void showPersonalArea(ActionEvent actionEvent) {
-        VistaNavigator.loadVista(VistaNavigator.PERSONAL);
+        Pane pane = null;
+        switch (userRole){
+            case "team_owner":
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.PERSONAL_TEAM_OWNER));
+                try {
+                    pane = (Pane) loader.load();
+                } catch (IOException e) {
+                }
+                PersonalAreaControllerTeamOwner controller = loader.getController();
+                //Set data in the controller
+                controller.init(personalDetails, userName.getText());
+                try {
+                    //Node node = loader.load();
+                    VistaNavigator.loadVista(pane);
+                }catch (Exception e){
+
+                }
+                //TODO: other roles
+        }
     }
 
     @FXML

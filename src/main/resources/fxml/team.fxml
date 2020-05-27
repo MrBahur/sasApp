@@ -11,27 +11,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="teamPage" prefHeight="640.0" prefWidth="640.0" style="-fx-background-image: url('/images/background60.jpg');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.TeamController">
-    <children>
+<AnchorPane fx:id="teamPage" prefHeight="640.0" prefWidth="660.0" style="-fx-background-image: url('/images/background60.jpg');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.TeamController">
+   <children>
       <AnchorPane fx:id="teamFrame" layoutX="-2.0" layoutY="28.0" prefHeight="496.0" prefWidth="641.0">
          <children>
-            <Label contentDisplay="CENTER" layoutX="2.0" layoutY="195.0" prefHeight="17.0" prefWidth="640.0" style="-fx-background-color: white;" text="                                                                   Team Players" textAlignment="CENTER">
+            <Label contentDisplay="CENTER" layoutX="2.0" layoutY="195.0" prefHeight="17.0" prefWidth="660.0" style="-fx-background-color: white;" text="                                                                   Team Players" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="1.0" layoutY="39.0" prefHeight="42.0" prefWidth="642.0" style="-fx-background-color: black;" text="                                                        Team Management" textFill="WHITE">
+            <Label contentDisplay="CENTER" layoutX="1.0" layoutY="39.0" prefHeight="42.0" prefWidth="660.0" style="-fx-background-color: black;" text="                                                        Team Management" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Label>
-            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="137.0" layoutY="225.0" prefHeight="252.0" prefWidth="369.0" />
+            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="202.0" layoutY="225.0" prefHeight="200.0" prefWidth="250.0"/>
             <Text fx:id="teamName" fill="#f20d0d" fontSmoothingType="LCD" layoutX="230.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.47006225585938">
                <font>
                   <Font name="Arial Rounded MT Bold" size="36.0" />
                </font>
             </Text>
-            <AnchorPane layoutY="71.0" prefHeight="104.0" prefWidth="643.0" style="-fx-background-color: white;">
+            <AnchorPane layoutY="71.0" prefHeight="104.0" prefWidth="660.0" style="-fx-background-color: white;">
                <children>
                   <Label layoutX="154.0" layoutY="19.0" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: white;" text="Owners">
                      <font>
@@ -63,9 +63,9 @@
                         <Font name="Arial Rounded MT Bold" size="14.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="48.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="48.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/images/football-manager.png" />
+                        <Image url="@/images/manager.jpeg" />
                      </image>
                   </ImageView>
                </children>
@@ -80,7 +80,7 @@
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </JFXButton>
-    </children>
+   </children>
    <effect>
       <Blend />
    </effect>

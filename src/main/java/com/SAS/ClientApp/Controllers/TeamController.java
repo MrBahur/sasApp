@@ -49,6 +49,9 @@ public class TeamController implements Initializable {
         List<String> players = new LinkedList<>();
         for (Object obj: playerObj)
             players.add((String)obj);
+        Players.setStyle("-fx-font: Arial Rounded MT Bold");
+        Players.setStyle("-fx-font-size: 18");
+        Players.setStyle("-fx-alignment: CENTER");
         ObservableList items = Players.getItems();
         items.addAll(players);
         List<Object> ownersObj= ((JSONArray)team.get("Team Owners")).toList();
@@ -81,6 +84,6 @@ public class TeamController implements Initializable {
 //            e.printStackTrace();
 //        }
 //    }
-}
+    }
 }
 

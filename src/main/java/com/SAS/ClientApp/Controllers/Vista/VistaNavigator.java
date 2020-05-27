@@ -2,6 +2,8 @@ package com.SAS.ClientApp.Controllers.Vista;
 
 import com.SAS.ClientApp.Controllers.MainController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
+
 import java.io.IOException;
 
 /**
@@ -15,7 +17,7 @@ public class VistaNavigator {
     /**
      * Convenience constants for fxml layouts managed by the navigator.
      */
-    public static final String PERSONAL = "/fxml/personalArea.fxml";
+    public static final String PERSONAL_TEAM_OWNER = "/fxml/personalAreaTeamOwner.fxml";
     public static final String LEAGUES = "/fxml/leagues.fxml";
     public static final String TEAMS = "/fxml/teams.fxml";
     public static final String PLAYERS = "/fxml/players.fxml";
@@ -27,9 +29,10 @@ public class VistaNavigator {
     public static final String GAME = "/fxml/game.fxml";
     public static final String VISTA_1 = "/fxml/vista1.fxml";
     public static final String VISTA_2 = "/fxml/vista2.fxml";
-    public static final String LOGIN = "/fxml/login.fxml";
     public static final String TEAM = "/fxml/team.fxml";
     public static final String REGISTER = "/fxml/register.fxml";
+    public static final String OPENTEAM = "/fxml/openTeam.fxml";
+
 
 
     /**
@@ -71,4 +74,11 @@ public class VistaNavigator {
         }
     }
 
+    public static void loadVista(Pane pane) {
+        try {
+            mainController.setVista(pane);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

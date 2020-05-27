@@ -20,11 +20,11 @@
                         <Image url="@/images/welcome.jpg" />
                     </image>
                 </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="92.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/images/logoTransperent.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="92.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logoTransperent.png" />
+                    </image>
+                </ImageView>
                 <Label alignment="CENTER" layoutX="89.0" layoutY="141.0" prefHeight="23.0" prefWidth="205.0" text="make managing easy" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI" size="12.0" />
@@ -55,7 +55,7 @@
                         <Font name="Segoe UI" size="10.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnSignup" layoutX="3.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="34.0" prefWidth="275.0" stylesheets="@/css/fullpackstyling.css" text="Sign up" />
+                <Button fx:id="btnSignup" layoutX="3.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="34.0" prefWidth="275.0" stylesheets="@/css/fullpackstyling.css" text="Sign up" />
             </children>
         </Pane>
         <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="394.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

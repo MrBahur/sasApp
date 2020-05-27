@@ -3,8 +3,13 @@ package com.SAS.ClientApp.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import com.SAS.ClientApp.Controllers.Vista.VistaNavigator;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -28,6 +34,9 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 public class WelcomeController implements Initializable {
+
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private boolean initDone;
 
     @FXML
     private Label lblErrors;
@@ -46,6 +55,10 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private Button btnSignup;
+
+    @FXML private Pane mainPane;
+
+    @FXML private Stage stage;
 
 
     public void handleRegister(ActionEvent actionEvent) {
@@ -100,45 +113,42 @@ public class WelcomeController implements Initializable {
             setLblError(Color.TOMATO, "Empty credentials");
         } else {
             response = sendLoginRequest();
-            if(!response.equals("Failed")){
+            if (!response.equals("Failed")) {
                 try {
                     Node node = (Node) actionEvent.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
+                    stage = (Stage) node.getScene().getWindow();
                     //stage.close();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
-                    Pane mainPane = null;
+                    Callable<Boolean> initDetails = () -> {
+                        try {
+                            return setPersonalArea(userName, response);
+                        } catch (Exception e) {
+                            throw new IllegalStateException("task interrupted", e);
+                        }
+                    };
                     try {
-                        mainPane = (Pane) loader.load();
-                    } catch (IOException e) {
+                        Future<Boolean> future = executor.submit(initDetails);
+                        new WelcomeController.HoldScreen().start();
+                        initDone = future.get();
+
+                    } catch (Exception e) {
+
                     }
-                    // Get the Controller from the FXMLLoader
-                    MainController mainController = loader.getController();
-                    VistaNavigator.setMainController(loader.getController());
-                    // Set data in the controller
-                    mainController.setUserName(userName);
-                    mainController.setUserRole(response);
-                    stage.close();
-                    Scene scene = new Scene(mainPane);
-                    stage.setScene(scene);
-                    stage.show();
-                }
-                catch (Exception e){
+
+                } catch (Exception e) {
 
                 }
             }
         }
     }
 
-    private String sendLoginRequest(){
+    private String sendLoginRequest() {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String result = "";
         try {
             HttpPost request = new HttpPost(MainController.serverURL + "/users/login");
-
             JSONObject json = new JSONObject();
             json.put("username", txtUsername.getText());
             json.put("password", txtPassword.getText());
-
             //create the request
             StringEntity stringEntity = new StringEntity(json.toString());
             request.getRequestLine();
@@ -148,7 +158,6 @@ public class WelcomeController implements Initializable {
             CloseableHttpResponse response = httpClient.execute(request);
 
             try {
-
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     result = EntityUtils.toString(entity);
@@ -174,6 +183,14 @@ public class WelcomeController implements Initializable {
         return result;
     }
 
+    private void loadStage(Stage stage, Pane mainPane){
+        executor.shutdownNow();
+        stage.close();
+        Scene scene = new Scene(mainPane);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         /*
@@ -193,5 +210,90 @@ public class WelcomeController implements Initializable {
         lblErrors.setTextFill(color);
         lblErrors.setText(text);
         System.out.println(text);
+    }
+
+    private boolean setPersonalArea(String username, String role) {
+        String response = sendDetailsRequest(username, role);
+        if (!response.equals("Failed")) {
+            // parsing JSON
+            JSONObject details = new JSONObject(response);
+
+            switch (role) {
+                case "team_owner":
+//                    // Get the Controller from the FXMLLoader
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
+                    try {
+                        mainPane = (Pane) loader.load();
+                    } catch (IOException e) {
+                    }
+                    // Get the Controller from the FXMLLoader
+                    MainController mainController = loader.getController();
+                    VistaNavigator.setMainController(loader.getController());
+                    // Set data in the controller
+                    mainController.setPersonalDetails(details);
+                    mainController.setUserName(username);
+                    mainController.setUserRole(role);
+
+//                    PersonalAreaControllerTeamOwner controller = loader.getController();
+//                    // Set data in the controller
+//                    Boolean result = controller.init(details);
+
+                    return true;
+
+                default:
+                    return true;
+            }
+        }
+        return false;
+
+    }
+
+    private String sendDetailsRequest(String username, String role) {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String result = "";
+        try {
+            String url = String.format(MainController.serverURL + "/users/getUserDetails/%s/%s", username, role);
+            HttpGet request = new HttpGet(url);
+            //create the request
+            CloseableHttpResponse response = httpClient.execute(request);
+            try {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    result = EntityUtils.toString(entity);
+                }
+
+            } finally {
+                response.close();
+            }
+        } catch (Exception e) {
+            return result;
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                return result;
+            }
+        }
+        return result;
+    }
+
+
+    class HoldScreen extends Thread {
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(5000);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (initDone) {
+                            loadStage(stage, mainPane);
+                        }
+                    }
+                });
+            } catch (Exception e) {
+
+            }
+        }
     }
 }
