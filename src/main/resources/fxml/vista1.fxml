@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-stylesheet vista.css?>
 
-<StackPane fx:id="vista1" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.Vista1Controller">
+<StackPane fx:id="vista1" xmlns:fx="http://javafx.com/fxml" fx:controller="com.SAS.ClientApp.Controllers.Vista1Controller">
     <children>
         <Button mnemonicParsing="false" onAction="#nextPane" text="Next Pane" />
     </children>

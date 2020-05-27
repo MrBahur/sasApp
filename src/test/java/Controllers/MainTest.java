@@ -1,6 +1,6 @@
 package Controllers;
 
-import Main.Main;
+import com.SAS.ClientApp.DeYMCAApplication;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -23,7 +23,7 @@ public abstract class MainTest extends ApplicationTest {
      */
     @Before
     public void setUpClass() throws Exception {
-        ApplicationTest.launch(Main.class);
+        ApplicationTest.launch(DeYMCAApplication.class);
     }
 
     @Override

@@ -10,6 +10,10 @@
     -fx-padding: 5px;
 }
 
+#vistaHolder {
+    -fx-background-color: lightgrey;
+}
+
 #vista1 {
     -fx-background-color: aliceblue;
 }
