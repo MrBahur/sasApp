@@ -7,16 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 import java.io.IOException;
 
 /**
  * Main.Main application class.
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class Main extends Application {
+public class SasApp extends Application {
 
     public static Boolean isSplashLoaded = false;
 
@@ -63,7 +60,10 @@ public class Main extends Application {
         return scene;
     }
 
+    /*
     public static void main(String[] args) {
-        launch(args);
+        //SpringApplication.run(SasApp.class, args);
+        //launch(args);
     }
+    */
 }

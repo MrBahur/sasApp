@@ -6,11 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -60,27 +62,42 @@ public class TeamController implements Initializable {
     }
 
     public void edit(ActionEvent actionEvent) {
-//        CloseableHttpClient httpClient = HttpClients.createDefault();
-//
-//        try {
-//            HttpPost request = new HttpPost(MainController.serverURL + "/users/login");
-//
-//            JSONObject json = new JSONObject();
-//
-//
-//
-//        } finally {
-//            response.close();
-//        }
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//    } finally {
-//        try {
-//            httpClient.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+
+        try {
+            HttpPost request = new HttpPost(MainController.serverURL + "/team/closeTeam");
+
+            JSONObject json = new JSONObject();
+            json.put("teamName", teamName.getText());
+            json.put("owner", "Rami123");
+
+            //create the request
+            StringEntity stringEntity = new StringEntity(json.toString());
+            request.getRequestLine();
+            request.setEntity(stringEntity);
+            request.addHeader("Content-Type", "application/json");
+
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            try {
+
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    String result = EntityUtils.toString(entity);
+                }
+
+            } finally {
+                response.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 }
 }
 

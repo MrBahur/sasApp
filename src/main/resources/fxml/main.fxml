@@ -13,6 +13,7 @@
         <VBox prefHeight="230.0" prefWidth="180.0">
             <JFXTextField prefWidth="180.0" text="Welcome Back , " />
             <JFXTextField fx:id="userName" prefWidth="180.0" text="" />
+            <JFXButton fx:id="notification" buttonType="RAISED" onAction="#showNotifications" prefHeight="30.0" prefWidth="30.0" ripplerFill="#fc0000" style="-fx-background-image: url('/images/noNotification.jpeg');"/>
             <ImageView fitHeight="89.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                 </image>
