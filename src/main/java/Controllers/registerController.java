@@ -30,8 +30,9 @@ public class registerController {
 
 
     public void handleSubmit(ActionEvent actionEvent) {
-        register();
-        showWelcomeScreen(actionEvent);
+        if(register()){
+            showWelcomeScreen(actionEvent);
+        }
     }
 
     private void showWelcomeScreen(ActionEvent actionEvent) {
@@ -51,11 +52,13 @@ public class registerController {
     }
 
 
-    public void register() {
+    public boolean register() {
+        boolean res = false;
 
         //check that all fields are full
 
         if (fullNameField.getText().isEmpty() || userNameField.getText().isEmpty() || passwordField.getText().isEmpty() || emailField.getText().isEmpty()) {
+            res = false;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Missing input");
             alert.setContentText("One or more of the registration fields are empty. Please make sure you fill in all the required details");
@@ -85,12 +88,12 @@ public class registerController {
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setContentText("Your account was created successfully.");
                             alert.show();
-                            //move to login
-                            //VistaNavigator.loadVista(VistaNavigator.LOGIN);
+                            res = true;
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setContentText("Your details are invalid.\nPlease try again.");
                             alert.show();
+                            res = false;
                         }
                     }
 
@@ -107,5 +110,6 @@ public class registerController {
                 }
             }
         }
+        return res;
     }
 }
