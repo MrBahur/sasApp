@@ -101,12 +101,16 @@ public class TeamController implements Initializable {
         String result;
         if (!open){  //team is closed
             result = openTeam();
-            if (result.equals("success"))
+            if (!result.equals("fail")) {
                 closeBtn.setText("Close team");
+                open = true;
+            }
         }else{
             result = closeTeam();
-            if(result.equals("success"))
+            if(!result.equals("fail")) {
                 closeBtn.setText("Open team");
+                open = false;
+            }
         }
     }
 

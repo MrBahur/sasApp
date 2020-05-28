@@ -127,7 +127,21 @@ public class MainController {
                 }catch (Exception e){
 
                 }
-                //TODO: other roles
+             default:
+                 FXMLLoader loaderG = new FXMLLoader(getClass().getResource(VistaNavigator.PERSONAL_GENERAL));
+                 try {
+                     pane = (Pane) loaderG.load();
+                 } catch (IOException e) {
+                 }
+                 PersonalAreaControllerGeneral controllerG = loaderG.getController();
+                 //Set data in the controller
+                 controllerG.init(personalDetails);
+                 try {
+                     //Node node = loader.load();
+                     VistaNavigator.loadVista(pane);
+                 }catch (Exception e){
+
+                 }
         }
     }
 

@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="teamPage" prefHeight="640.0" prefWidth="660.0" style="-fx-background-image: url('/images/background60.jpg');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.TeamController">
    <children>
-      <AnchorPane fx:id="teamFrame" layoutX="-2.0" layoutY="28.0" prefHeight="496.0" prefWidth="641.0">
+      <AnchorPane fx:id="teamFrame" layoutX="-2.0" layoutY="28.0" prefHeight="496.0" prefWidth="660.0">
          <children>
             <Label contentDisplay="CENTER" layoutX="2.0" layoutY="195.0" prefHeight="17.0" prefWidth="660.0" style="-fx-background-color: white;" text="                                                                   Team Players" textAlignment="CENTER">
                <font>
@@ -25,7 +25,7 @@
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Label>
-            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="202.0" layoutY="225.0" prefHeight="200.0" prefWidth="250.0" />
+            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="207.0" layoutY="225.0" prefHeight="200.0" prefWidth="228.0" />
             <Text fx:id="teamName" fill="#f20d0d" fontSmoothingType="LCD" layoutX="230.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.47006225585938">
                <font>
                   <Font name="Arial Rounded MT Bold" size="36.0" />
@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <JFXButton fx:id="closeBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="557.0" layoutY="11.0" onAction="#closeOpenTeam" style="-fx-border-color: white;" text="Close team" textFill="black">
+            <JFXButton fx:id="closeBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="509.0" layoutY="14.0" onAction="#closeOpenTeam" style="-fx-border-color: white;" text="Close team" textFill="black">
                <effect>
                   <Glow />
                </effect>
@@ -80,7 +80,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="554.0" layoutY="14.0" onAction="#edit" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: white;" text="Edit team" textFill="black">
+      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="507.0" layoutY="14.0" onAction="#edit" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: white;" text="Edit team" textFill="black">
          <effect>
             <Glow />
          </effect>
