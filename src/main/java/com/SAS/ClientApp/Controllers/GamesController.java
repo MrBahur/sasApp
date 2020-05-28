@@ -107,8 +107,8 @@ public class GamesController implements Initializable {
             gameController.init(rowData.getGuestTeamName(), rowData.getHostTeamName(), rowData.getGuestScore(), rowData.getHostScore(), rowData.getGameID(), LocalDate.parse(rowData.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             Scene newScene = new Scene(root);
             Stage newStage = new Stage();
-            newStage.setMaxHeight(640);
-            newStage.setMaxWidth(620);
+            newStage.setMaxHeight(800);
+            newStage.setMaxWidth(1000);
             newStage.setScene(newScene);
             newStage.show();
 

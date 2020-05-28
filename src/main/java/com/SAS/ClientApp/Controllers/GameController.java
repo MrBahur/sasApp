@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import org.apache.http.HttpEntity;
@@ -35,7 +32,26 @@ public class GameController implements Initializable {
     public TextField host_team_name;
     public TextField host_team_score;
     public TableView<Event> events_table;
-    public Button add_event_btn;
+    public ChoiceBox<String> goal_choice_box;
+    public TextField goal_player_name;
+    public Button goal_btn;
+    public Button injury_btn;
+    public TextField injury_player_name;
+    public TextArea injury_description;
+    public Button offence_btn;
+    public TextField offence_player_committed;
+    public TextField offence_player_against;
+    public TextArea offence_description;
+    public Button offside_btn;
+    public ChoiceBox<String> offside_choice_box;
+    public TextField offside_player_name;
+    public Button sub_btn;
+    public TextField sub_player_in;
+    public TextField sub_player_out;
+    public Button card_btn;
+    public ChoiceBox<String> card_choice_box;
+    public TextField card_referee;
+    public TextField card_player;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,11 +60,30 @@ public class GameController implements Initializable {
 
     public void init(String guestTeamName, String hostTeamName, String guestScore, String hostScore, String gameID, LocalDate gameDate) {
         this.guest_team_name.setText(guestTeamName);
+        this.guest_team_name.setEditable(false);
         this.guest_team_score.setText(guestScore);
+        this.guest_team_score.setEditable(false);
         this.host_team_name.setText(hostTeamName);
+        this.host_team_name.setEditable(false);
         this.host_team_score.setText(hostScore);
+        this.host_team_score.setEditable(false);
+        this.events_table.setEditable(true);
 
-        events_table.setEditable(true);
+        this.goal_btn.setOnAction((event -> addEventToGame(gameID, gameDate, "goal")));
+        this.injury_btn.setOnAction(event -> addEventToGame(gameID, gameDate, "injury"));
+        this.offence_btn.setOnAction(event -> addEventToGame(gameID, gameDate, "offence"));
+        this.offside_btn.setOnAction(event -> addEventToGame(gameID, gameDate, "offside"));
+        this.sub_btn.setOnAction(event -> addEventToGame(gameID, gameDate, "sub"));
+        this.card_btn.setOnAction(event -> addEventToGame(gameID, gameDate, "card"));
+
+        this.goal_choice_box.getItems().add("Host");
+        this.goal_choice_box.getItems().add("Guest");
+
+        this.offside_choice_box.getItems().add("Host");
+        this.offside_choice_box.getItems().add("Guest");
+
+        this.card_choice_box.getItems().add("Yellow");
+        this.card_choice_box.getItems().add("Red");
 
         TableColumn<Event, String> gameMinuteColumn = new TableColumn<>("game minute");
         gameMinuteColumn.setCellValueFactory(new PropertyValueFactory<>("gameMinute"));
@@ -66,11 +101,46 @@ public class GameController implements Initializable {
         events_table.getColumns().addAll(gameMinuteColumn, typeColumn, descriptionColumn);
         events_table.getSortOrder().add(gameMinuteColumn);
 
-        add_event_btn.setOnAction(event -> addEventToGame(gameID, gameDate));
-
     }
 
-    private void addEventToGame(String gameID, LocalDate gameDate) {
+    private void addEventToGame(String gameID, LocalDate gameDate, String type) {
+        if (canAlterGame(gameID, gameDate)) {
+            switch (type) {
+                case "goal":
+                    String goalTeamName = (goal_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
+                    String goalPlayerName = goal_player_name.getText();
+                    break;
+                case "injury":
+                    String injuryPlayerName = injury_player_name.getText();
+                    String injuryDesc = injury_description.getText();
+                    break;
+                case "offence":
+                    String offenceDesc = offence_description.getText();
+                    String offencePlayerComm = offence_player_committed.getText();
+                    String offencePlayerAgainst = offence_player_against.getText();
+                    break;
+                case "offside":
+                    String offsidePlayerName = offside_player_name.getText();
+                    String offsideTeamName = (offside_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
+                    break;
+                case "sub":
+                    String subPlayerIn = sub_player_in.getText();
+                    String subPlayerOut = sub_player_out.getText();
+                    break;
+                case "ticket":
+                    String ticketType = card_choice_box.getValue();
+                    String playerAgainst = card_player.getText();
+                    String refereePulled = card_referee.getText();
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            System.out.println("can't alter event");
+        }
+    }
+
+    private boolean canAlterGame(String gameID, LocalDate gameDate) {
         //test if the game can be edited (5 hours after it end) and after it starts.
         LocalTime gameHour = LocalTime.of(20, 0);
         LocalDateTime gameTime = LocalDateTime.of(gameDate, gameHour);
@@ -92,16 +162,17 @@ public class GameController implements Initializable {
                         canEdit = loggedInID.equals(refs.getInt(i) + "");
                     }
                     if (canEdit) {
-                        //do the add game shit
+                        return true;
                     } else {
-                        System.out.println("can't edit cuz of permissions");
+                        return false;
                     }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                return false;
             }
         } else {
-            System.out.println("can't edit cuz of time after game");
+            return false;
         }
     }
 
