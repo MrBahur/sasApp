@@ -6,11 +6,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,6 +32,8 @@ public class TeamController implements Initializable {
     @FXML private javafx.scene.control.ListView Players;
     @FXML private javafx.scene.layout.AnchorPane teamPage;
     @FXML private JFXButton editBtn;
+    @FXML private JFXButton closeBtn;
+    private static boolean open = true;
 
 
     @FXML
@@ -39,6 +44,12 @@ public class TeamController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (MainController.userRole.equals("team_owner")){
+            editBtn.setVisible(true);
+            closeBtn.setVisible(true);
+        }else if(MainController.userRole.equals("team_manager")){
+            editBtn.setVisible(true);
+        }
     }
 
     public void init(JSONObject team){
@@ -84,6 +95,118 @@ public class TeamController implements Initializable {
 //            e.printStackTrace();
 //        }
 //    }
+}
+
+    public void closeOpenTeam(ActionEvent actionEvent) {
+        String result;
+        if (!open){  //team is closed
+            result = openTeam();
+            if (!result.equals("fail")) {
+                closeBtn.setText("Close team");
+                open = true;
+            }
+        }else{
+            result = closeTeam();
+            if(!result.equals("fail")) {
+                closeBtn.setText("Open team");
+                open = false;
+            }
+        }
+    }
+
+    private String openTeam(){
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String result = "";
+        try {
+            HttpPost request = new HttpPost(MainController.serverURL + "/team/openTeam");
+            JSONObject json = new JSONObject();
+            json.put("teamName", teamName.getText());
+            json.put("owner", MainController.username);
+            //create the request
+            StringEntity stringEntity = new StringEntity(json.toString());
+            request.getRequestLine();
+            request.setEntity(stringEntity);
+            request.addHeader("Content-Type", "application/json");
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            try {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    result = EntityUtils.toString(entity);
+                    if (result.equals("fail")) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Team could not be opened.");
+                        alert.show();
+                        return result;
+                    }else{
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setHeaderText("Open team");
+                        alert.setContentText("Team was opened successfully");
+                        alert.show();
+                        return result;
+                    }
+                }
+
+            } finally {
+                response.close();
+            }
+        } catch (Exception e) {
+            return result;
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                return result;
+            }
+        }
+        return result;
+    }
+
+    private String closeTeam() {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String result = "";
+        try {
+            HttpPost request = new HttpPost(MainController.serverURL + "/team/closeTeam");
+            JSONObject json = new JSONObject();
+            json.put("teamName", teamName.getText());
+            json.put("owner", MainController.username);
+            //create the request
+            StringEntity stringEntity = new StringEntity(json.toString());
+            request.getRequestLine();
+            request.setEntity(stringEntity);
+            request.addHeader("Content-Type", "application/json");
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            try {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    result = EntityUtils.toString(entity);
+                    if (result.equals("fail")) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Team could not be closed.");
+                        alert.show();
+                        return result;
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setHeaderText("Close team");
+                        alert.setContentText("Team was closed successfully");
+                        alert.show();
+                        return result;
+                    }
+                }
+            } finally {
+                response.close();
+            }
+        } catch (Exception e) {
+            return result;
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                return result;
+            }
+        }
+        return result;
     }
 }
 
