@@ -3,27 +3,41 @@ package com.SAS.ClientApp.Controllers;
 import com.SAS.ClientApp.Controllers.Vista.VistaNavigator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
+@Service
 public class MainController {
 
+    @Autowired
     public static final String serverURL = "http://localhost:8080";
     private JSONObject personalDetails;
     private String userRole;
+    private List<String> notifications = new LinkedList<>();
 
     public static String userID;
 
@@ -41,6 +55,8 @@ public class MainController {
     private JFXButton games;
     @FXML
     private JFXButton exit;
+    @FXML
+    private javafx.scene.control.Button notificationBtn;
 
 
     public void setUserRole(String userRole) {
@@ -145,4 +161,24 @@ public class MainController {
         VistaNavigator.loadVista(VistaNavigator.GAMES);
     }
 
+    public void addNotification(String message) {
+        notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
+        this.notifications.add(message);
+    }
+
+    public void showNotifications(ActionEvent actionEvent) {
+        notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
+        this.notifications.add("bla");
+        ListView<String> list = new ListView<String>();
+        ObservableList<String> items = FXCollections.observableArrayList (notifications);
+        list.setItems(items);
+
+        Stage notificationsStage = new Stage();
+        notificationsStage.setTitle("Notifications");
+
+        VBox vbox = new VBox(list);
+        Scene scene = new Scene(vbox, 350, 250);
+        notificationsStage.setScene(scene);
+        notificationsStage.show();
+    }
 }
