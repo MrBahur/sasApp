@@ -37,7 +37,7 @@ public class MainController {
     public static final String serverURL = "http://localhost:8080";
     private JSONObject personalDetails;
     private String userRole;
-    private List<String> notifications = new LinkedList<>();
+    private static List<String> notifications = new LinkedList<>();
 
     public static String userID;
 
@@ -162,14 +162,13 @@ public class MainController {
     }
 
     public void addNotification(String message) {
-        notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
+        //notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
         this.notifications.add(message);
     }
 
     public void showNotifications(ActionEvent actionEvent) {
-        notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
-        this.notifications.add("bla");
-        ListView<String> list = new ListView<String>();
+        //notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
+        ListView<String> list = new ListView<>();
         ObservableList<String> items = FXCollections.observableArrayList (notifications);
         list.setItems(items);
 
