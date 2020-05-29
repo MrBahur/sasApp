@@ -171,7 +171,6 @@ public class TeamsController implements Initializable {
                     newStage.setScene(newScene);
                     newStage.show();
                 }
-
             } finally {
                 response.close();
             }

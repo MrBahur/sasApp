@@ -38,7 +38,7 @@ public class TeamController implements Initializable {
     @FXML private javafx.scene.layout.AnchorPane teamPage;
     @FXML private JFXButton editBtn;
     @FXML private JFXButton closeBtn;
-    private static boolean open = true;
+    private static boolean open;
 
 
     @FXML
@@ -65,9 +65,6 @@ public class TeamController implements Initializable {
         List<String> players = new LinkedList<>();
         for (Object obj: playerObj)
             players.add((String)obj);
-        Players.setStyle("-fx-font: Arial Rounded MT Bold");
-        Players.setStyle("-fx-font-size: 18");
-        Players.setStyle("-fx-alignment: CENTER");
         ObservableList items = Players.getItems();
         items.addAll(players);
         List<Object> ownersObj= ((JSONArray)team.get("Team Owners")).toList();
@@ -75,6 +72,12 @@ public class TeamController implements Initializable {
         for (Object obj: ownersObj)
             owners+= ((String)obj) + '\n';
         teamOwners.setText(owners);
+        open = team.get("Activity status").toString().equals("true") ? true : false;
+        if(open)
+            closeBtn.setText("Close team");
+        else
+            closeBtn.setText("Open team");
+
 
     }
 
