@@ -6,7 +6,10 @@ import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -114,12 +117,9 @@ public class TeamController implements Initializable {
                     String result = EntityUtils.toString(entity);
 
                     if (result.equals("success")) {
-                        System.out.println("success");
+                        VistaNavigator.getMainController().setNotificationsButton();
                     }
 
-                    else {
-                        System.out.println("failed");
-                    }
                 }
 
             } finally {

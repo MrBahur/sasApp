@@ -56,7 +56,9 @@ public class MainController {
     @FXML
     private JFXButton exit;
     @FXML
-    private javafx.scene.control.Button notificationBtn;
+    private JFXButton notificationBtn;
+
+
 
 
     public void setUserRole(String userRole) {
@@ -162,12 +164,14 @@ public class MainController {
     }
 
     public void addNotification(String message) {
-        //notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
+        if (notificationBtn != null) {
+            notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
+        }
         this.notifications.add(message);
     }
 
     public void showNotifications(ActionEvent actionEvent) {
-        //notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
+        notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
         ListView<String> list = new ListView<>();
         ObservableList<String> items = FXCollections.observableArrayList (notifications);
         list.setItems(items);
@@ -179,5 +183,17 @@ public class MainController {
         Scene scene = new Scene(vbox, 350, 250);
         notificationsStage.setScene(scene);
         notificationsStage.show();
+    }
+
+    public void setNotificationsButton() {
+        if (notificationBtn != null) {
+            notificationBtn.setStyle("-fx-background-image: url('/images/notification.jpeg')");
+        }
+    }
+
+    public void setNoNotificationsButton() {
+        if (notificationBtn != null) {
+            notificationBtn.setStyle("-fx-background-image: url('/images/noNotification.jpeg')");
+        }
     }
 }

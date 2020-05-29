@@ -239,6 +239,7 @@ public class WelcomeController implements Initializable {
                     mainController.setUserName(username);
                     mainController.setUserRole(role);
                     mainController.setUserID(userID);
+                    mainController.setNoNotificationsButton();
 
 //                    PersonalAreaControllerTeamOwner controller = loader.getController();
 //                    // Set data in the controller
