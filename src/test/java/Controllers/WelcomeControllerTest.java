@@ -2,6 +2,8 @@ package Controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyCode;
 import org.junit.Test;
 
 import java.awt.*;
@@ -12,11 +14,13 @@ public class WelcomeControllerTest extends MainTest {
 
     String userNameTextFieldID = "#txtUsername";
     String passwordTextFieldID = "#txtPassword";
+    String btnSignupID = "#btnSignup";
     String btnSignInID = "#btnSignin";
+    String btnGuestID = "#btnGuest";
     String loggedUserNameTextID = "#userName";
 
     @Test
-    public void handleRegisterSuccess() {
+    public void handleLoginSuccess() {
         sleep(5000);
         clickOn(userNameTextFieldID);
         write("a");
@@ -29,7 +33,7 @@ public class WelcomeControllerTest extends MainTest {
     }
 
     @Test
-    public void handleRegisterFail() {
+    public void handleLoginFail() {
         sleep(5000);
         clickOn(userNameTextFieldID);
         write("a");
@@ -43,9 +47,41 @@ public class WelcomeControllerTest extends MainTest {
 
     @Test
     public void handleGuestLogin() {
+        sleep(5000);
+        clickOn(btnGuestID);
+        JFXTextField userName = find(loggedUserNameTextID);
+
+        assertEquals("Guest", userName.getText());
     }
 
     @Test
-    public void handleLogin() {
+    public void handSignupFail() {
+        sleep(5000);
+        clickOn(btnSignupID);
+        Button signin = find("#submitButton");
+        assertNotNull(signin);
     }
+
+    /*
+    @Test
+    public void handSignupFail() {
+        sleep(5000);
+        clickOn(btnSignupID);
+        clickOn("#userNameField");
+        write("test");
+        clickOn("#passwordField");
+        write("test");
+        clickOn("#fullNameField");
+        write("test test");
+        clickOn("#emailField");
+        write("test@test.com");
+        clickOn("#occupation");
+        ComboBox occupation = find("#occupation");
+        type(KeyCode.DOWN);
+        type(KeyCode.ENTER);
+        //occupation.setValue("FAN");
+        Button signin = find(btnSignInID);
+        assertNotNull(signin);
+    }
+     */
 }
