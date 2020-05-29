@@ -216,7 +216,7 @@ public class WelcomeController implements Initializable {
         System.out.println(text);
     }
 
-    private boolean setPersonalArea(String username, String role, String userID) {
+     private boolean setPersonalArea(String username, String role, String userID) {
         String response = sendDetailsRequest(username, role);
         if (!response.equals("Failed")) {
             // parsing JSON
@@ -237,6 +237,7 @@ public class WelcomeController implements Initializable {
             mainController.setUserName(username);
             mainController.setUserRole(role);
             mainController.setUserID(userID);
+            mainController.setNoNotificationsButton();
             return true;
         }
         return false;
