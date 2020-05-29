@@ -4,15 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="gamePane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.GameController">
+<AnchorPane fx:id="gamePane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.GameController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="407.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="700.0" prefWidth="1000.0">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20;">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" style="-fx-padding: 20;">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <TextField alignment="TOP_CENTER" text="Guest">
+                        <TextField alignment="TOP_CENTER" editable="false" text="Guest">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin></TextField>
@@ -43,7 +43,7 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <TextField alignment="TOP_CENTER" text="Host">
+                        <TextField alignment="TOP_CENTER" editable="false" text="Host">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin></TextField>
@@ -56,18 +56,145 @@
                   </VBox>
                </children>
             </HBox>
-            <TableView fx:id="events_table" prefHeight="200.0" prefWidth="200.0" />
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="add_event_btn" mnemonicParsing="false" text="Add event">
-                     <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
+            <TableView fx:id="events_table" maxWidth="960.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin></TableView>
+            <HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="800.0" spacing="15.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="183.0" prefWidth="150.0">
+                     <children>
+                        <Button fx:id="goal_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Goal">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></Button>
+                        <ChoiceBox fx:id="goal_choice_box" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <TextField fx:id="goal_player_name" text="Player" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="183.0" prefWidth="180.0">
+                     <children>
+                        <Button fx:id="injury_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Injury" />
+                        <TextField fx:id="injury_player_name" text="Player">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin></TextField>
+                        <TextArea fx:id="injury_description" prefHeight="200.0" prefWidth="200.0" text="description:">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </TextArea>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="110.0" layoutY="10.0" prefHeight="183.0" prefWidth="180.0">
+                     <children>
+                        <Button fx:id="offence_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Offence">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></Button>
+                        <TextField fx:id="offence_player_committed" prefWidth="173.0" text="Player Committed">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="offence_player_against" layoutX="10.0" layoutY="40.0" text="Player Against">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextArea fx:id="offence_description" prefHeight="200.0" prefWidth="200.0" text="description:" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="210.0" layoutY="10.0" prefHeight="183.0" prefWidth="150.0">
+                     <children>
+                        <Button fx:id="offside_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Offside">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></Button>
+                        <ChoiceBox fx:id="offside_choice_box" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></ChoiceBox>
+                        <TextField fx:id="offside_player_name" text="Player" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="310.0" layoutY="10.0" prefHeight="187.0" prefWidth="146.0">
+                     <children>
+                        <Button fx:id="sub_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Player Substitution">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></Button>
+                        <TextField fx:id="sub_player_in" text="Player In">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="sub_player_out" layoutX="10.0" layoutY="40.0" text="Player Out" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="310.0" layoutY="10.0" prefHeight="183.0" prefWidth="150.0">
+                     <children>
+                        <Button fx:id="card_btn" alignment="TOP_CENTER" mnemonicParsing="false" text="Card">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin></Button>
+                        <ChoiceBox fx:id="card_choice_box" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <TextField fx:id="card_referee" text="Referee Pulled">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="card_player" layoutX="10.0" layoutY="65.0" text="Player" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
             </HBox>
          </children></VBox>
    </children>

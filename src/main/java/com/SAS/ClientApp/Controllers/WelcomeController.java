@@ -59,7 +59,8 @@ public class WelcomeController implements Initializable {
     private Button btnSignup;
 
 
-    @FXML private Stage stage;
+    @FXML
+    private Stage stage;
 
 
     public void handleRegister(ActionEvent actionEvent) {
@@ -100,8 +101,7 @@ public class WelcomeController implements Initializable {
             Scene scene = new Scene(mainPane);
             stage.setScene(scene);
             stage.show();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -187,7 +187,7 @@ public class WelcomeController implements Initializable {
         return result;
     }
 
-    private void loadStage(Stage stage, Pane mainPane){
+    private void loadStage(Stage stage, Pane mainPane) {
         executor.shutdownNow();
         stage.close();
         Scene scene = new Scene(mainPane);
@@ -216,40 +216,29 @@ public class WelcomeController implements Initializable {
         System.out.println(text);
     }
 
-    private boolean setPersonalArea(String username,  String role, String userID) {
+     private boolean setPersonalArea(String username, String role, String userID) {
         String response = sendDetailsRequest(username, role);
         if (!response.equals("Failed")) {
             // parsing JSON
             JSONObject details = new JSONObject(response);
 
-            switch (role) {
-                case "team_owner":
-//                    // Get the Controller from the FXMLLoader
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
-                    try {
-                        mainPane = (Pane) loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    // Get the Controller from the FXMLLoader
-                    MainController mainController = loader.getController();
-                    VistaNavigator.setMainController(loader.getController());
-                    // Set data in the controller
-                    mainController.setPersonalDetails(details);
-                    mainController.setUserName(username);
-                    mainController.setUserRole(role);
-                    mainController.setUserID(userID);
-                    mainController.setNoNotificationsButton();
-
-//                    PersonalAreaControllerTeamOwner controller = loader.getController();
-//                    // Set data in the controller
-//                    Boolean result = controller.init(details);
-
-                    return true;
-
-                default:
-                    return true;
+            // Get the Controller from the FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.MAIN));
+            try {
+                mainPane = (Pane) loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            // Get the Controller from the FXMLLoader
+            MainController mainController = loader.getController();
+            VistaNavigator.setMainController(loader.getController());
+            // Set data in the controller
+            mainController.setPersonalDetails(details);
+            mainController.setUserName(username);
+            mainController.setUserRole(role);
+            mainController.setUserID(userID);
+            mainController.setNoNotificationsButton();
+            return true;
         }
         return false;
 

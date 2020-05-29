@@ -36,9 +36,10 @@ public class MainController {
     @Autowired
     public static final String serverURL = "http://localhost:8080";
     private JSONObject personalDetails;
-    private String userRole;
     private static List<String> notifications = new LinkedList<>();
 
+    public static String userRole;
+    public static String username;
     public static String userID;
 
     @FXML
@@ -67,6 +68,7 @@ public class MainController {
 
     public void setUserName(String userName) {
         this.userName.setText(userName);
+        this.username = userName;
     }
 
     public void setPersonalArea(boolean isDisable) {
@@ -144,7 +146,21 @@ public class MainController {
                 }catch (Exception e){
 
                 }
-                //TODO: other roles
+             default:
+                 FXMLLoader loaderG = new FXMLLoader(getClass().getResource(VistaNavigator.PERSONAL_GENERAL));
+                 try {
+                     pane = (Pane) loaderG.load();
+                 } catch (IOException e) {
+                 }
+                 PersonalAreaControllerGeneral controllerG = loaderG.getController();
+                 //Set data in the controller
+                 controllerG.init(personalDetails);
+                 try {
+                     //Node node = loader.load();
+                     VistaNavigator.loadVista(pane);
+                 }catch (Exception e){
+
+                 }
         }
     }
 
