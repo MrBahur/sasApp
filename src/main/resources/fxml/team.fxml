@@ -25,10 +25,10 @@
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
             </Label>
-            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="207.0" layoutY="225.0" prefHeight="200.0" prefWidth="228.0" />
-            <Text fx:id="teamName" fill="#f20d0d" fontSmoothingType="LCD" layoutX="230.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.47006225585938">
+            <ListView fx:id="Players" blendMode="SRC_ATOP" layoutX="207.0" layoutY="231.0" prefHeight="177.0" prefWidth="228.0" />
+            <Text fx:id="teamName" fill="#f20d0d" fontSmoothingType="LCD" layoutX="108.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="423.4700927734375">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="36.0" />
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Text>
             <AnchorPane layoutY="71.0" prefHeight="104.0" prefWidth="660.0" style="-fx-background-color: white;">
@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <JFXButton fx:id="closeBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="509.0" layoutY="14.0" onAction="#closeOpenTeam" style="-fx-border-color: white;" text="Close team" textFill="black">
+            <JFXButton fx:id="closeBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="509.0" layoutY="14.0" onAction="#closeOpenTeam" style="-fx-border-color: white;" text="Close team" textFill="black" visible="false">
                <effect>
                   <Glow />
                </effect>
@@ -80,7 +80,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="507.0" layoutY="14.0" onAction="#edit" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: white;" text="Edit team" textFill="black">
+      <JFXButton fx:id="editBtn" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="507.0" layoutY="14.0" onAction="#edit" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: white;" text="Edit team" textFill="black" visible="false">
          <effect>
             <Glow />
          </effect>

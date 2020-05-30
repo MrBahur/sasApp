@@ -67,7 +67,7 @@ public class TeamController implements Initializable {
         for (Object obj: ownersObj)
             owners+= ((String)obj) + '\n';
         teamOwners.setText(owners);
-        open = team.get("Active").toString().equals("true") ? true : false;
+        open = team.get("Activity status").toString().equals("true") ? true : false;
         if(open)
             closeBtn.setText("Close team");
         else
