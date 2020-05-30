@@ -81,6 +81,9 @@ public class LeaguesController implements Initializable {
         add_policies_to_league_btn.setOnAction((ActionEvent event) -> {
             addPolicies();
         });
+        add_season_to_league_btn.setOnAction((ActionEvent event) -> {
+            addSeasonToLeague();
+        });
     }
 
     private void addPolicies() {
@@ -99,7 +102,22 @@ public class LeaguesController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    private void addSeasonToLeague() {
+        try {
+            FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.ADDSEASONTOLEAGUE));
+            Parent root = loader.load();
+            AddSeasonToLeagueController seasonToLeagueController = loader.getController();
+            seasonToLeagueController.init();
+            Scene newScene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setMaxHeight(640);
+            newStage.setMaxWidth(620);
+            newStage.setScene(newScene);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void openAddLeague() {
         try {
             FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.ADDLEAGUE));
