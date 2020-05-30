@@ -29,7 +29,7 @@ public class AddPoliciesController {
         add_policies_btn.setOnAction(event -> addPolicies());
     }
 
-    private void addPolicies() {
+    public void addPolicies() {
         //check that all fields are full
 
         if (!(league_name.getText() == null || league_name.getText() == "" || season_year.getText() == null || season_year.getText() == "")) {
