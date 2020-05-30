@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="addSeasonToLeaguePane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.AddSeasonToLeagueController">
+<AnchorPane fx:id="addSeasonToLeaguePane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.AddSeasonToLeagueController">
     <children>
         <TextField fx:id="season_year" alignment="TOP_CENTER" layoutX="335.0" layoutY="93.0" prefHeight="25.0" prefWidth="171.0" text="Insert the year of the season" />
         <Button fx:id="add_season_to_league_btn" layoutX="241.0" layoutY="164.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add season to league" />

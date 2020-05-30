@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="leaguesPane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.LeaguesController">
+<AnchorPane fx:id="leaguesPane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.LeaguesController">
     <children>
         <Text layoutX="277.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="leagues" />
       <Button fx:id="add_referee_in_league_btn" layoutX="456.0" layoutY="559.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add referee league in season" />

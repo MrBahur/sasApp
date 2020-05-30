@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="removeRefereePane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.LeaguesController">
+<AnchorPane fx:id="removeRefereePane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.LeaguesController">
     <children>
         <TextField fx:id="referee_name" alignment="TOP_CENTER" layoutX="252.0" layoutY="93.0" text="Referee name" />
         <Button fx:id="remove_league_btn" layoutX="241.0" layoutY="211.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Remove referee" />
