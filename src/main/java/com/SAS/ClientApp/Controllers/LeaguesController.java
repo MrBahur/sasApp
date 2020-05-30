@@ -75,11 +75,29 @@ public class LeaguesController implements Initializable {
         vbox.getChildren().addAll(label, tableView);
 
         leaguesPane.getChildren().add(vbox);
-        int check = 0;
         add_league_btn.setOnAction((ActionEvent event) -> {
             openAddLeague();
-
         });
+        add_policies_to_league_btn.setOnAction((ActionEvent event) -> {
+            addPolicies();
+        });
+    }
+
+    private void addPolicies() {
+        try {
+            FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.ADDPOLICIES));
+            Parent root = loader.load();
+            AddPoliciesController policiesController = loader.getController();
+            policiesController.init();
+            Scene newScene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setMaxHeight(640);
+            newStage.setMaxWidth(620);
+            newStage.setScene(newScene);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void openAddLeague() {

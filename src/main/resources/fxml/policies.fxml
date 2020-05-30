@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="addPoliciesPane" prefHeight="552.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.AddPoliciesController">
+    <children>
+        <TextField fx:id="league_name" alignment="TOP_CENTER" layoutX="165.0" layoutY="68.0" text="League name" />
+        <TextField fx:id="season_year" alignment="TOP_CENTER" layoutX="325.0" layoutY="68.0" prefHeight="25.0" prefWidth="149.0" text="Season" />
+        <Button fx:id="add_policies_btn" layoutX="229.0" layoutY="428.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add Policies" />
+        <RadioButton fx:id="f1" layoutX="204.0" layoutY="144.0" prefHeight="24.0" prefWidth="103.0" text="Goal Differnce">
+            <toggleGroup>
+                <ToggleGroup fx:id="ranking" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="f2" layoutX="204.0" layoutY="168.0" prefHeight="24.0" prefWidth="103.0" text="Most Wins">
+            <toggleGroup>
+                <fx:reference source="ranking" />
+            </toggleGroup>
+        </RadioButton>
+      <RadioButton fx:id="f3" layoutX="204.0" layoutY="233.0" prefHeight="24.0" prefWidth="232.0" text="Three points for win one point for draw">
+         <toggleGroup>
+            <ToggleGroup fx:id="points" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="f4" layoutX="204.0" layoutY="257.0" prefHeight="24.0" prefWidth="214.0" text="Two points for win and one for draw">
+          <toggleGroup>
+              <fx:reference source="points" />
+          </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="f5" layoutX="204.0" layoutY="281.0" prefHeight="24.0" prefWidth="221.0" text="One point for win and none for draw">
+          <toggleGroup>
+              <fx:reference source="points" />
+          </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="f6" layoutX="204.0" layoutY="334.0" prefHeight="24.0" prefWidth="232.0" text="One round league">
+          <toggleGroup>
+              <ToggleGroup fx:id="rounds" />
+          </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="f7" layoutX="204.0" layoutY="358.0" prefHeight="24.0" prefWidth="232.0" text="Two rounds league">
+          <toggleGroup>
+              <fx:reference source="rounds" />
+          </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="f8" layoutX="204.0" layoutY="382.0" prefHeight="24.0" prefWidth="232.0" text="Three rounds league">
+          <toggleGroup>
+              <fx:reference source="rounds" />
+          </toggleGroup>
+      </RadioButton>
+        <Text layoutX="266.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Policies">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="204.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose ranking policy">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="204.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose points policy">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="204.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose game policy">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>

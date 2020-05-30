@@ -22,6 +22,7 @@ public class VistaNavigator {
     public static final String PERSONAL_GENERAL = "/fxml/personalAreaGeneral.fxml";
     public static final String LEAGUES = "/fxml/leagues.fxml";
     public static final String ADDLEAGUE = "/fxml/addLeague.fxml";
+    public static final String ADDPOLICIES = "/fxml/policies.fxml" ;
     public static final String TEAMS = "/fxml/teams.fxml";
     public static final String PLAYERS = "/fxml/players.fxml";
     public static final String ANIMATION = "/fxml/animation.fxml";
@@ -35,7 +36,6 @@ public class VistaNavigator {
     public static final String TEAM = "/fxml/team.fxml";
     public static final String REGISTER = "/fxml/register.fxml";
     public static final String OPENTEAM = "/fxml/openTeam.fxml";
-
 
 
     /**

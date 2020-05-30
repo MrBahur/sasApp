@@ -43,7 +43,7 @@ public class AddLeagueController {
             try {
                 HttpPost request = new HttpPost(MainController.serverURL + "/league/createLeague");
                 JSONObject json = new JSONObject();
-                json.put("user", MainController.userID);
+                json.put("user", MainController.username);
                 json.put("leagueName", league_name.getText());
                 //create the request
                 StringEntity stringEntity = new StringEntity(json.toString());
@@ -55,7 +55,7 @@ public class AddLeagueController {
                     HttpEntity entity = response.getEntity();
                     if (entity != null) {
                         String result = EntityUtils.toString(entity);
-                        if (result.equals("Created")) {
+                        if (result.equals("success")) {
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setContentText("Your League was created successfully.");
                             alert.show();
