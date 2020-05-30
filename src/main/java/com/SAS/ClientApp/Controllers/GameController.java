@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -23,6 +25,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
@@ -78,12 +81,15 @@ public class GameController implements Initializable {
 
         this.goal_choice_box.getItems().add("Host");
         this.goal_choice_box.getItems().add("Guest");
+        this.goal_choice_box.setValue("Host");
 
         this.offside_choice_box.getItems().add("Host");
         this.offside_choice_box.getItems().add("Guest");
+        this.offside_choice_box.setValue("Host");
 
         this.card_choice_box.getItems().add("Yellow");
         this.card_choice_box.getItems().add("Red");
+        this.card_choice_box.setValue("Yellow");
 
         TableColumn<Event, String> gameMinuteColumn = new TableColumn<>("game minute");
         gameMinuteColumn.setCellValueFactory(new PropertyValueFactory<>("gameMinute"));
@@ -104,36 +110,139 @@ public class GameController implements Initializable {
     }
 
     private void addEventToGame(String gameID, LocalDate gameDate, String type) {
-        if (canAlterGame(gameID, gameDate)) {
-            switch (type) {
-                case "goal":
-                    String goalTeamName = (goal_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
-                    String goalPlayerName = goal_player_name.getText();
-                    break;
-                case "injury":
-                    String injuryPlayerName = injury_player_name.getText();
-                    String injuryDesc = injury_description.getText();
-                    break;
-                case "offence":
-                    String offenceDesc = offence_description.getText();
-                    String offencePlayerComm = offence_player_committed.getText();
-                    String offencePlayerAgainst = offence_player_against.getText();
-                    break;
-                case "offside":
-                    String offsidePlayerName = offside_player_name.getText();
-                    String offsideTeamName = (offside_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
-                    break;
-                case "sub":
-                    String subPlayerIn = sub_player_in.getText();
-                    String subPlayerOut = sub_player_out.getText();
-                    break;
-                case "ticket":
-                    String ticketType = card_choice_box.getValue();
-                    String playerAgainst = card_player.getText();
-                    String refereePulled = card_referee.getText();
-                    break;
-                default:
-                    break;
+        int gameMinuteNum;
+        if (!canAlterGame(gameID, gameDate)) {
+            TextInputDialog dialog = new TextInputDialog("0-90");
+            dialog.setTitle("game minute");
+            dialog.setHeaderText("please enter the game minute that the event happened in");
+            dialog.setContentText("game minute: (number between 1 to 90");
+
+            Optional<String> gameMinute = dialog.showAndWait();
+            try {
+                if (!gameMinute.isPresent()) {
+                    throw new Exception("illegal value for game minute");
+                }
+                gameMinuteNum = Integer.parseInt(gameMinute.get());
+                if (!(gameMinuteNum >= 1 && gameMinuteNum <= 90)) {
+                    throw new Exception("illegal value for game minute");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            String result = "";
+            try {
+                HttpPost request = new HttpPost(MainController.serverURL + "/games/events/add");
+                JSONObject json = new JSONObject();
+                json.put("date", gameDate.toString());
+                json.put("game_id", gameID);
+                json.put("minute", gameMinuteNum);
+                switch (type) {
+                    case "goal":
+                        json.put("type", "goal");
+                        String goalTeamName = (goal_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
+                        String goalPlayerName = goal_player_name.getText();
+                        if (goalPlayerName.isEmpty() || goalPlayerName.equals("Player")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        json.put("team_name", goalTeamName);
+                        json.put("player_name", goalPlayerName);
+
+                        break;
+                    case "injury":
+                        json.put("type", "injury");
+                        String injuryPlayerName = injury_player_name.getText();
+                        if (injuryPlayerName.isEmpty() || injuryPlayerName.equals("Player")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        String injuryDesc = injury_description.getText();
+                        json.put("player_name", injuryPlayerName);
+                        json.put("description", injuryDesc);
+
+                        break;
+                    case "offence":
+                        json.put("type", "offence");
+                        String offenceDesc = offence_description.getText();
+                        String offencePlayerComm = offence_player_committed.getText();
+                        if (offencePlayerComm.isEmpty() || offencePlayerComm.equals("Player Committed")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        String offencePlayerAgainst = offence_player_against.getText();
+                        if (offencePlayerAgainst.isEmpty() || offencePlayerAgainst.equals("Player Against")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        json.put("description", offenceDesc);
+                        json.put("player_committed", offencePlayerComm);
+                        json.put("player_against", offencePlayerAgainst);
+                        break;
+                    case "offside":
+                        json.put("type", "offside");
+                        String offsidePlayerName = offside_player_name.getText();
+                        if (offsidePlayerName.isEmpty() || offsidePlayerName.equals("Player")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        String offsideTeamName = (offside_choice_box.getValue().equals("Host")) ? host_team_name.getText() : guest_team_name.getText();
+                        json.put("player_name", offsidePlayerName);
+                        json.put("team_name", offsideTeamName);
+                        break;
+                    case "sub":
+                        json.put("type", "sub");
+                        String subPlayerIn = sub_player_in.getText();
+                        if (subPlayerIn.isEmpty() || subPlayerIn.equals("Player In")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        String subPlayerOut = sub_player_out.getText();
+                        if (subPlayerOut.isEmpty() || subPlayerOut.equals("Player Out")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        json.put("player_in", subPlayerIn);
+                        json.put("player_out", subPlayerOut);
+                        break;
+                    case "ticket":
+                        json.put("type", "ticket");
+                        String ticketType = card_choice_box.getValue();
+                        String playerAgainst = card_player.getText();
+                        if (playerAgainst.isEmpty() || playerAgainst.equals("Player")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        String refereePulled = card_referee.getText();
+                        if (refereePulled.isEmpty() || refereePulled.equals("Referee Pulled")) {
+                            throw (new IllegalArgumentException());
+                        }
+                        json.put("ticket_type", ticketType);
+                        json.put("player_against", playerAgainst);
+                        json.put("referee_pulled", refereePulled);
+                        break;
+                    default:
+                        break;
+                }
+                StringEntity stringEntity = new StringEntity(json.toString());
+                request.getRequestLine();
+                request.setEntity(stringEntity);
+                request.addHeader("Content-Type", "application/json");
+                try (CloseableHttpResponse response = httpClient.execute(request)) {
+                    HttpEntity entity = response.getEntity();
+                    if (entity != null) {
+                        result = EntityUtils.toString(entity);
+                        if (result.equals("fail")) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("Event could not been added.");
+                            alert.show();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setHeaderText("add event");
+                            alert.setContentText("event added successfully");
+                            alert.show();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Event could not been added.");
+                alert.show();
             }
         } else {
             System.out.println("can't alter event");
