@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -28,7 +27,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 @Service
 public class MainController {
@@ -146,6 +144,24 @@ public class MainController {
                 }catch (Exception e){
 
                 }
+                break;
+            case "association_representative":
+                FXMLLoader loaderR = new FXMLLoader(getClass().getResource(VistaNavigator.PERSONAL_REPRESENTATIVE));
+                try {
+                    pane = (Pane) loaderR.load();
+                } catch (IOException e) {
+                }
+                PersonalAreaControllerRepresentative controllerR = loaderR.getController();
+                //Set data in the controller
+                controllerR.init(personalDetails);
+                try {
+                    //Node node = loader.load();
+                    VistaNavigator.loadVista(pane);
+                }catch (Exception e){
+
+                }
+                break;
+
              default:
                  FXMLLoader loaderG = new FXMLLoader(getClass().getResource(VistaNavigator.PERSONAL_GENERAL));
                  try {
@@ -161,6 +177,7 @@ public class MainController {
                  }catch (Exception e){
 
                  }
+                 break;
         }
     }
 

@@ -1,14 +1,24 @@
 package com.SAS.ClientApp.Controllers;
 
 import com.SAS.ClientApp.Controllers.Vista.VistaNavigator;
+import com.SAS.ClientApp.Controllers.viewers.TeamsViewer;
+import com.sun.javafx.scene.control.skin.LabeledText;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -18,32 +28,37 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.*;
 
 
-public class PersonalAreaControllerTeamOwner {
+public class PersonalAreaControllerRepresentative {
 
-    @FXML private javafx.scene.control.TextField name;
-    @FXML private javafx.scene.control.TextField username;
-    @FXML private javafx.scene.control.TextField email;
-    @FXML private javafx.scene.control.TextField teamName;
-    @FXML private javafx.scene.control.TextField nominatedBy;
-    @FXML private javafx.scene.control.Button editbtn;
-    @FXML private javafx.scene.control.Button savebtn;
-    @FXML private javafx.scene.control.Button cancelbtn;
-    @FXML private javafx.scene.control.Button registerbtn;
-    @FXML private javafx.scene.layout.AnchorPane personal;
-    @FXML private javafx.scene.layout.AnchorPane role;
-    @FXML private javafx.scene.control.SplitPane split;
-    @FXML private javafx.scene.control.TextField newTeamName;
-
-
+    @FXML
+    private javafx.scene.control.TextField name;
+    @FXML
+    private javafx.scene.control.TextField username;
+    @FXML
+    private javafx.scene.control.TextField email;
+    @FXML
+    private javafx.scene.control.Button editbtn;
+    @FXML
+    private javafx.scene.control.Button savebtn;
+    @FXML
+    private javafx.scene.control.Button cancelbtn;
+    @FXML
+    private javafx.scene.layout.AnchorPane personal;
+    @FXML
+    private javafx.scene.layout.AnchorPane role;
+    @FXML
+    private javafx.scene.control.SplitPane split;
 
     private String sname;
     private String semail;
-    private static String currentOwner;
-    private static String newTeam;
+    private static String currentRepresentative;
 
 
     /**
@@ -53,23 +68,16 @@ public class PersonalAreaControllerTeamOwner {
      */
     @FXML
     void nextPane(ActionEvent event) {
-        VistaNavigator.loadVista(VistaNavigator.PERSONAL_TEAM_OWNER);
+        VistaNavigator.loadVista(VistaNavigator.PERSONAL_REPRESENTATIVE);
     }
 
-    public boolean init(JSONObject details, String currentOwner){
+    public boolean init(JSONObject details) {
         username.setText(details.get("Username").toString());
         name.setText(details.get("Name").toString());
         email.setText(details.get("Email").toString());
-        if (details.has("Team name")){
-            teamName.setText(details.get("Team name").toString());
-
-        }
-        if (details.has("Nominated by")) {
-            nominatedBy.setText(details.get("Nominated by").toString());
-        }
-        this.sname= name.getText();
+        this.sname = name.getText();
         this.semail = email.getText();
-        this.currentOwner = currentOwner;
+        this.currentRepresentative = MainController.userRole;
         return true;
     }
 
@@ -84,7 +92,7 @@ public class PersonalAreaControllerTeamOwner {
     public void saveDetails(ActionEvent actionEvent) {
         //call update in DB
         if (updateDetails().equals("OK")) {
-            sname= name.getText();
+            sname = name.getText();
             semail = email.getText();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Your details have been saved.");
@@ -144,7 +152,7 @@ public class PersonalAreaControllerTeamOwner {
         email.setText(semail);
     }
 
-    private void exitEdit(){
+    private void exitEdit() {
         split.setStyle("-fx-background-color: white");
         name.setEditable(false);
         email.setEditable(false);
@@ -152,38 +160,13 @@ public class PersonalAreaControllerTeamOwner {
         savebtn.setVisible(false);
     }
 
-    public void registerTeam(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(VistaNavigator.class.getResource(VistaNavigator.OPENTEAM));
-        try {
-            Parent root = (Parent) loader.load();
-            Scene newScene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setTitle("Team registration");
-            newStage.setMaxHeight(640);
-            newStage.setMaxWidth(620);
-            newStage.setScene(newScene);
-            newStage.show();
-        }catch(Exception e){
 
-        }
-    }
-
-
-    public void checkTeamStatus(ActionEvent actionEvent) {
-
+    public void confirmTeam(ActionEvent actionEvent) {
         //check in DB
         CloseableHttpClient httpClient = HttpClients.createDefault();
-
         try {
-            if (newTeam==null){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Registration status");
-                alert.setContentText("Please open a new registration request first");
-                alert.show();
-                return;
-            }
 
-            String url = String.format(MainController.serverURL + "/team/%s/teamStatus", newTeam.replace(" ", "%20"));
+            String url = String.format(MainController.serverURL + "/team/getUnregisteredTeams");
             HttpGet request = new HttpGet(url);
             //create the request
             CloseableHttpResponse response = httpClient.execute(request);
@@ -191,11 +174,30 @@ public class PersonalAreaControllerTeamOwner {
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     String result = EntityUtils.toString(entity);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Registration status");
-                    alert.setHeaderText("Registration status");
-                    alert.setContentText("Your new team's status: " + result);
-                    alert.show();
+                    JSONArray res = new JSONArray(result);
+                    ListView<String> listView = new ListView<>();
+
+                    List<Object> listObj = res.toList();
+                    List<String> teams = new LinkedList<>();
+                    for (Object obj : listObj)
+                        teams.add((String) obj);
+                    ObservableList items = listView.getItems();
+                    items.addAll(teams);
+                    listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            if (!confirmSpecificTeam(listView.getSelectionModel().getSelectedItem()).equals("fail"))
+                                listView.getItems().remove(listView.getSelectionModel().getSelectedIndex());
+
+                        }
+                    });
+
+                    Stage stage = new Stage();
+                    stage.setTitle("Unregistered teams");
+                    VBox vbox = new VBox(listView);
+                    Scene scene = new Scene(vbox, 350, 250);
+                    stage.setScene(scene);
+                    stage.show();
                 }
 
             } finally {
@@ -212,20 +214,33 @@ public class PersonalAreaControllerTeamOwner {
         }
     }
 
+    private String confirmSpecificTeam(String teamName) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Register team approval");
+        alert.setHeaderText("Team approval");
+        alert.setContentText("Would you like to approve this team?");
+        ButtonType buttonApprove = new ButtonType("Approve");
+        ButtonType buttonReject = new ButtonType("Reject");
+        alert.getButtonTypes().setAll(buttonApprove, buttonReject);
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonApprove){
+            return sendResponse(teamName, "approve");
+        } else if  (result.get() == buttonReject){
+            return sendResponse(teamName, "reject");
+        }
+        alert.show();
+        return "";
+    }
 
-
-    public void registerRequest(ActionEvent actionEvent) {
-        //Send to DB
+    private String sendResponse(String teamName, String confirm) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-
+        String result = "";
         try {
-            HttpPost request = new HttpPost(MainController.serverURL + "/team/registerTeam");
-
+            HttpPost request = new HttpPost(MainController.serverURL + "/team/approveTeam");
             JSONObject json = new JSONObject();
-            json.put("teamName", newTeamName.getText());
-            json.put("teamOwner", currentOwner);
-            newTeam = newTeamName.getText();
+            json.put("teamName", teamName);
+            json.put("confirm", confirm);
 
             //create the request
             StringEntity stringEntity = new StringEntity(json.toString());
@@ -233,37 +248,31 @@ public class PersonalAreaControllerTeamOwner {
             request.setEntity(stringEntity);
             request.addHeader("Content-Type", "application/json");
             CloseableHttpResponse response = httpClient.execute(request);
-
             try {
-
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
-                    String result = EntityUtils.toString(entity);
-                    if (result.equals("success")) {
+                    result = EntityUtils.toString(entity);
+                    if (!result.equals("fail")) {
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setContentText("Your request to register the team was sent to the Association. You may follow the request status to check if registration was completed");
-                        alert.show();
-                        Node node = (Node) actionEvent.getSource();
-                        Stage stage = (Stage) node.getScene().getWindow();
-                        stage.close();
-
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Your team name is invalid or your permissions are not sufficient.");
+                        alert.setTitle("Team registration");
+                        alert.setContentText("Team was approved successfully");
                         alert.show();
                     }
                 }
+
             } finally {
                 response.close();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            return result;
         } finally {
             try {
                 httpClient.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                return result;
             }
         }
+        return result;
     }
 }
+

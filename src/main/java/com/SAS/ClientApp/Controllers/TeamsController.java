@@ -148,7 +148,8 @@ public class TeamsController implements Initializable {
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         try {
-            String url = String.format(MainController.serverURL + "/team/getTeamPage/%s", teamName);
+            String teamNameNoSpace = teamName.replace(" ", "%20");
+            String url = String.format(MainController.serverURL + "/team/getTeamPage/%s", teamNameNoSpace);
             HttpGet request = new HttpGet(url);
             //create the request
             CloseableHttpResponse response = httpClient.execute(request);

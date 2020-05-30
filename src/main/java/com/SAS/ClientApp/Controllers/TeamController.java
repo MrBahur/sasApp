@@ -77,8 +77,6 @@ public class TeamController implements Initializable {
             closeBtn.setText("Close team");
         else
             closeBtn.setText("Open team");
-
-
     }
 
     public void edit(ActionEvent actionEvent) {
@@ -112,12 +110,14 @@ public class TeamController implements Initializable {
             if (!result.equals("fail")) {
                 closeBtn.setText("Close team");
                 open = true;
+                VistaNavigator.getMainController().setNotificationsButton();
             }
         }else{
             result = closeTeam();
             if(!result.equals("fail")) {
                 closeBtn.setText("Open team");
                 open = false;
+                VistaNavigator.getMainController().setNotificationsButton();
             }
         }
     }
@@ -217,47 +217,6 @@ public class TeamController implements Initializable {
         return result;
     }
 
-    public void closeTeam(ActionEvent actionEvent) {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
 
-        try {
-            HttpPost request = new HttpPost(MainController.serverURL + "/team/closeTeam");
-
-            JSONObject json = new JSONObject();
-            json.put("teamName", teamName.getText());
-            json.put("owner", "Rami123");
-
-            //create the request
-            StringEntity stringEntity = new StringEntity(json.toString());
-            request.getRequestLine();
-            request.setEntity(stringEntity);
-            request.addHeader("Content-Type", "application/json");
-
-            CloseableHttpResponse response = httpClient.execute(request);
-            try {
-
-                HttpEntity entity = response.getEntity();
-                if (entity != null) {
-                    String result = EntityUtils.toString(entity);
-
-                    if (result.equals("success")) {
-                        VistaNavigator.getMainController().setNotificationsButton();
-                    }
-
-                }
-
-            } finally {
-                response.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
 
