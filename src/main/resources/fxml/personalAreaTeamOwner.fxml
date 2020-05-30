@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="578.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.PersonalAreaControllerTeamOwner">
+<AnchorPane prefHeight="578.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.PersonalAreaControllerTeamOwner">
    <children>
       <TabPane layoutX="13.0" layoutY="9.0" prefHeight="553.0" prefWidth="622.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
          <tabs>
