@@ -16,68 +16,29 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class AddPoliciesController {
-    public AnchorPane addPoliciesPane;
+public class AddSeasonToLeagueController {
+    public AnchorPane addSeasonToLeaguePane;
     public TextField league_name;
     public TextField season_year;
-    public Button add_policies_btn;
-    public ToggleGroup ranking;
-    public ToggleGroup rounds;
-    public ToggleGroup points;
+    public Button add_season_to_league_btn;
 
     public void init() {
-        add_policies_btn.setOnAction(event -> addPolicies());
+        add_season_to_league_btn.setOnAction(event -> addSeasonToLeague());
     }
 
-    private void addPolicies() {
+    private void addSeasonToLeague() {
         //check that all fields are full
 
-        if (!(league_name.getText() == null || league_name.getText() == "" || season_year.getText() == null || season_year.getText() == "")) {
+        if (!(league_name.getText() == null || league_name.getText() == ""||season_year.getText() == null || season_year.getText() == "")) {
             try {
                 Integer.parseInt(season_year.getText());
                 CloseableHttpClient httpClient = HttpClients.createDefault();
                 try {
-                    HttpPost request = new HttpPost(MainController.serverURL + "/league/definePolicies");
+                    HttpPost request = new HttpPost(MainController.serverURL + "/league/addSeasonToLeague");
                     JSONObject json = new JSONObject();
-                    json.put("username", MainController.username);
                     json.put("leagueName", league_name.getText());
                     json.put("seasonName", season_year.getText());
-                    if (ranking.getSelectedToggle() == null || rounds.getSelectedToggle() == null || points.getSelectedToggle() == null) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Please choose all the policies");
-                        alert.show();
-                        throw new Exception();
-                    } else {
-                        if (ranking.getSelectedToggle().toString().charAt(16) == '1') {
-                            json.put("leagueRankPolicy", "2");
-                        } else {
-                            if (ranking.getSelectedToggle().toString().charAt(16) == '2') {
-                                json.put("leagueRankPolicy", "1");
-                            }
-                        }
-                        if (points.getSelectedToggle().toString().charAt(16) == '3') {
-                            json.put("pointsPolicy", "3");
-                        } else {
-                            if (points.getSelectedToggle().toString().charAt(16) == '4') {
-                                json.put("pointsPolicy", "2");
-                            } else {
-                                if (points.getSelectedToggle().toString().charAt(16) == '5') {
-                                    json.put("pointsPolicy", "1");
-                                }
-                            }
-                        }
-                        if (rounds.getSelectedToggle().toString().charAt(16) == '6') {
-                            json.put("gamePolicy", "1");
-                        } else {
-                            if (rounds.getSelectedToggle().toString().charAt(16) == '7') {
-                                json.put("gamePolicy", "2");
-                            } else {
-                                if (rounds.getSelectedToggle().toString().charAt(16) == '8') {
-                                    json.put("gamePolicy", "3");
-                                }
-                            }
-                        }
-                    }
+
                     //create the request
                     StringEntity stringEntity = new StringEntity(json.toString());
                     request.getRequestLine();
@@ -90,7 +51,7 @@ public class AddPoliciesController {
                             String result = EntityUtils.toString(entity);
                             if (result.equals("success")) {
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setContentText("Added policies to league in season successfully.");
+                                alert.setContentText("Added season to league successfully.");
                                 alert.show();
                             } else {
                                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -117,7 +78,8 @@ public class AddPoliciesController {
                 alert.setContentText("The 'year' field is not integer");
                 alert.show();
             }
-        } else {
+        }
+        else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Some of the fields are empty");
             alert.show();
