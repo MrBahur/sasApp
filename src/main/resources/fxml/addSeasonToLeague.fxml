@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="addSeasonToLeaguePane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.LeaguesController">
+    <children>
+        <TextField fx:id="league_name" alignment="TOP_CENTER" layoutX="252.0" layoutY="93.0" text="League name" />
+        <TextField fx:id="season_year" alignment="TOP_CENTER" layoutX="252.0" layoutY="93.0" text="Season" />
+        <Button fx:id="add_season_to_league_btn" layoutX="241.0" layoutY="211.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add season to league" />
+    </children>
+</AnchorPane>
