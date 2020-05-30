@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.SAS.ClientApp.Controllers.LeaguesController" prefHeight="400.0" prefWidth="600.0">
+
+<AnchorPane fx:id="leaguesPane" prefHeight="627.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.ClientApp.Controllers.LeaguesController">
     <children>
         <Text layoutX="277.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="leagues" />
+      <Button fx:id="add_referee_in_league_btn" layoutX="456.0" layoutY="559.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add referee league in season" />
+      <Button fx:id="remove_referee_btn" layoutX="256.0" layoutY="559.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Remove referee" />
+      <Button fx:id="add_referee_btn" layoutX="55.0" layoutY="559.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add referee" />
+      <Button fx:id="add_league_btn" layoutX="55.0" layoutY="489.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add League" />
+      <Button fx:id="add_season_to_league_btn" layoutX="256.0" layoutY="489.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add season to league" />
+      <Button fx:id="add_policies_to_league_btn" layoutX="456.0" layoutY="489.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="171.0" text="Add policies to league" />
     </children>
 </AnchorPane>

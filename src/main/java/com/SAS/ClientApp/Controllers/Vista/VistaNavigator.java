@@ -21,6 +21,7 @@ public class VistaNavigator {
     public static final String PERSONAL_REPRESENTATIVE = "/fxml/personalAreaRepresentative.fxml";
     public static final String PERSONAL_GENERAL = "/fxml/personalAreaGeneral.fxml";
     public static final String LEAGUES = "/fxml/leagues.fxml";
+    public static final String ADDLEAGUE = "/fxml/addLeague.fxml";
     public static final String TEAMS = "/fxml/teams.fxml";
     public static final String PLAYERS = "/fxml/players.fxml";
     public static final String ANIMATION = "/fxml/animation.fxml";
