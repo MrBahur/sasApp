@@ -16,7 +16,7 @@
    <children>
       <TabPane layoutX="13.0" layoutY="9.0" prefHeight="553.0" prefWidth="622.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Personal details">
+            <Tab fx:id="tabPersonal" text="Personal details">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="640.0">
                      <children>
@@ -47,7 +47,7 @@
                                     <TextField fx:id="name" editable="false" layoutX="122.0" layoutY="59.0" prefHeight="25.0" prefWidth="189.0" />
                                     <TextField fx:id="username" editable="false" layoutX="122.0" layoutY="108.0" prefHeight="25.0" prefWidth="190.0" />
                                     <TextField fx:id="email" editable="false" layoutX="122.0" layoutY="157.0" prefHeight="25.0" prefWidth="191.0" />
-                                    <Button layoutX="570.0" layoutY="5.0" mnemonicParsing="false" onAction="#editDetails" prefHeight="27.0" prefWidth="30.0" style="-fx-background-image: url('/images/edit1.png');" />
+                                    <Button fx:id="editbtn" layoutX="570.0" layoutY="5.0" mnemonicParsing="false" onAction="#editDetails" prefHeight="27.0" prefWidth="30.0" style="-fx-background-image: url('/images/edit1.png');" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="role" minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="573.0" style="-fx-border-color: grey;">
@@ -79,13 +79,13 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Custom role actions">
+            <Tab fx:id="tabActions" text="Custom role actions">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                      <children>
                         <AnchorPane layoutX="3.0" prefHeight="521.0" prefWidth="615.0" style="-fx-border-color: grey;">
                            <children>
-                              <Button layoutX="245.0" layoutY="66.0" mnemonicParsing="false" onAction="#registerTeam" text="Apply" />
+                              <Button fx:id="registerbtn" layoutX="245.0" layoutY="66.0" mnemonicParsing="false" onAction="#registerTeam" text="Apply" />
                               <Button layoutX="245.0" layoutY="127.0" mnemonicParsing="false" onAction="#checkTeamStatus" text="Apply" />
                               <Label layoutX="83.0" layoutY="70.0" prefHeight="20.0" prefWidth="151.0" text="Register a new team">
                                  <font>

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -37,7 +38,8 @@ public class PersonalAreaControllerTeamOwner {
     @FXML private javafx.scene.layout.AnchorPane role;
     @FXML private javafx.scene.control.SplitPane split;
     @FXML private javafx.scene.control.TextField newTeamName;
-
+    @FXML private Tab tabPersonal;
+    @FXML private Tab tabActions;
 
 
     private String sname;
