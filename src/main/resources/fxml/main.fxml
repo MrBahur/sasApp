@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.MainController">
+<BorderPane prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SAS.Presentation.Controllers.MainController" >
     <left>
         <VBox prefHeight="230.0" prefWidth="140.0">
             <JFXTextField prefWidth="140.0" text="Welcome back , ">
@@ -59,7 +59,7 @@
     <center>
         <BorderPane fx:id="vistaHolder" style="-fx-background-image: url('/images/background60.jpg');">
             <center>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="640.0" stroke="BLACK" strokeType="INSIDE" width="660.0" BorderPane.alignment="CENTER" />
+                <Rectangle style="-fx-background-image: url('/images/background60.jpg');" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="640.0" stroke="BLACK" strokeType="INSIDE" width="660.0" BorderPane.alignment="CENTER" />
             </center>
         </BorderPane>
     </center>
