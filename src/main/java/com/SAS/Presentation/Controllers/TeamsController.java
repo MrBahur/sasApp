@@ -35,6 +35,7 @@ public class TeamsController implements Initializable {
     //@FXML private javafx.scene.control.TableView tableView;
     @FXML private javafx.scene.layout.AnchorPane teamsPane;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final Label label = new Label("Teams");
